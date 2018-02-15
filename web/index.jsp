@@ -8,11 +8,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title> Hello servlet</title>
+    <title>Hello</title>
 </head>
 <body>
     <h1>Най-накрая реши да работи!!!</h1>
-    <h2>Hello Servlets...</h2>
-    <h3>Започва мъката...</h3>
+
+    <form action = "LoginController.java" method = "GET">
+        Име:<br>
+        <input type="text" name="firstname" value="Ivan"><br>
+        Фамилия:<br>
+        <input type="text" name="lastname" value="Stoyanov"><br>
+        <input type="submit" value="Submit">
+    </form>
+
 </body>
 </html>
