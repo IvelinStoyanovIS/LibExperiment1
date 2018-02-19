@@ -11,7 +11,7 @@
     <title>Hello</title>
 </head>
 <body>
-    <h1>Най-накрая реши да работи!!!</h1>
+    <h1>Примерна форма, hello servlets and controllers!</h1>
 
     <form action = "LoginController.java" method = "GET">
         Име:<br>
@@ -20,6 +20,7 @@
         <input type="text" name="lastname" value="Stoyanov"><br>
         <input type="submit" value="Submit">
     </form>
+
 
 </body>
 </html>
