@@ -9,11 +9,17 @@
 <html>
 <head>
     <title>hello</title>
-    <form action = "Servlet_redirect.java" method = "GET">
-        <button type="button">Click Me!</button>
-    </form>
+
 </head>
 <body>
 
+
+
+
+    <form action="Servlet_redirect"  method = "GET">
+        <input type="submit" name="btn1" value="OK">
+        <input type="submit" name="btn2" value="OK">
+    </form>
 </body>
 </html>
+

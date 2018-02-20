@@ -20,7 +20,7 @@
 
     <servlet-mapping>
         <servlet-name>Servlet_redirect</servlet-name>
-        <url-pattern>/re</url-pattern>
+        <url-pattern>/Servlet_redirect</url-pattern>
     </servlet-mapping>
 
 </web-app>
