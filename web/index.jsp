@@ -13,12 +13,12 @@
 <body>
     <h1>Примерна форма, hello servlets and controllers!</h1>
 
-    <form action = "LoginController.java" method = "GET">
+    <form action = "LoginController.java" method = "POST">
         Име:<br>
-        <input type="text" name="firstname" value="Ivan"><br>
+        <input type="text" name="firstname" value="Tom"><br>
         Фамилия:<br>
         <input type="text" name="lastname" value="Stoyanov"><br>
-        <input type="submit" value="Submit">
+        <input type="submit" value="submit">
     </form>
 
 

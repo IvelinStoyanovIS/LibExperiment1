@@ -1,3 +1,7 @@
+
+
+import entities.Person;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,18 +16,15 @@ import java.io.PrintWriter;
 @WebServlet(name = "LoginController")
 public class LoginController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String fname = request.getParameter("firstname");
         String lname = request.getParameter("lastname");
         PrintWriter out = response.getWriter();
-        User user1 = new User(fname, lname);
+        User person1 = new User(fname, lname);
+        out.print("<p>" + "Name: " + person1.firstName + "</p>");
+        out.println("<p>" + "Surname: " + "<b>" + person1.lastName + "</b></p>");
+    }
 
-        out.print("<p>" + "Name: " + user1.firstName + "</p>");
-        out.println("<p>" + "Surname: " + "<b>" + user1.lastName + "</b></p>");
-
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 }
