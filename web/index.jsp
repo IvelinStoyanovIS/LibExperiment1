@@ -18,7 +18,7 @@
         <input type="text" name="firstname" value="Tom"><br>
         Фамилия:<br>
         <input type="text" name="lastname" value="Stoyanov"><br>
-        <input type="submit" value="Submit">
+        <input type="submit" value="submit">
     </form>
 
 
