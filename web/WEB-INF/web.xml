@@ -13,4 +13,14 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>Servlet_redirect</servlet-name>
+        <servlet-class>Servlet_redirect</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Servlet_redirect</servlet-name>
+        <url-pattern>/re</url-pattern>
+    </servlet-mapping>
+
 </web-app>
