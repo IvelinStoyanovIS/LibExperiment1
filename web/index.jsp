@@ -9,11 +9,12 @@
 <html>
 <head>
     <title>Hello</title>
+
 </head>
 <body>
     <h1>Примерна форма, hello servlets and controllers!</h1>
 
-    <form action = "LoginController.java" method = "POST">
+    <form action = "LoginController.java" method = "Post">
         Име:<br>
         <input type="text" name="firstname" value="Tom"><br>
         Фамилия:<br>

@@ -16,6 +16,7 @@ import java.io.PrintWriter;
 @WebServlet(name = "LoginController")
 public class LoginController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         String fname = request.getParameter("firstname");
         String lname = request.getParameter("lastname");
         PrintWriter out = response.getWriter();
@@ -25,6 +26,7 @@ public class LoginController extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 
     }
 }

@@ -12,13 +12,9 @@
 
 </head>
 <body>
-
-
-
-
-    <form action="Servlet_redirect"  method = "GET">
-        <input type="submit" name="btn1" value="OK">
-        <input type="submit" name="btn2" value="OK">
+    <form action="Servlet_redirect"  method = "Get">
+        <input type="submit" name="btn1" value="redirect exmple">
+        <input type="submit" name="btn2" value="jstl example">
     </form>
 </body>
 </html>
