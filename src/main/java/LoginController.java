@@ -2,6 +2,7 @@
 
 import entities.Person;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,10 +20,13 @@ public class LoginController extends HttpServlet {
 
         String fname = request.getParameter("firstname");
         String lname = request.getParameter("lastname");
+        String a;
         PrintWriter out = response.getWriter();
         User person1 = new User(fname, lname);
         out.print("<p>" + "Name: " + person1.firstName + "</p>");
         out.println("<p>" + "Surname: " + "<b>" + person1.lastName + "</b></p>");
+
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
