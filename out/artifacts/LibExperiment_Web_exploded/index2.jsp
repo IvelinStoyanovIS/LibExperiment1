@@ -16,6 +16,8 @@
         <input type="submit" name="btn1" value="redirect exmple">
         <input type="submit" name="btn2" value="jstl example">
     </form>
+
+
 </body>
 </html>
 

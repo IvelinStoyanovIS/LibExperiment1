@@ -1,5 +1,4 @@
 import daoimpl.PersonDaoImpl;
-import entities.Person;
 
 import java.util.List;
 
