@@ -1,3 +1,5 @@
+package controllers;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,7 +10,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpSession;
 
-@WebServlet(name = "Servlet_redirect")
+@WebServlet(name = "controllers.Servlet_redirect")
 public class Servlet_redirect extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

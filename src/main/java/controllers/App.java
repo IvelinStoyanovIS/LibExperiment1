@@ -1,4 +1,6 @@
-import daoimpl.PersonDaoImpl;
+package controllers;
+
+//import daoimpl.PersonDaoImpl;
 
 import java.util.List;
 
@@ -8,7 +10,7 @@ import java.util.List;
 public class App {
     public static void main(String [] args) {
 
-        PersonDaoImpl pdi = new PersonDaoImpl();
+//        PersonDaoImpl pdi = new PersonDaoImpl();
 
        /**Create table**/
  //       pdi.createPersonTable();
@@ -29,10 +31,10 @@ public class App {
  //       pdi.update(personUpdate,1);
 
         /**Select all persons**/
-        List<Person> persons = pdi.selectAll();
-        for(Person p : persons) {
-            System.out.println(p.getId()+", "+p.getFirstName()+", "+p.getLastName());
-        }
+//        List<Person> persons = pdi.selectAll();
+//        for(Person p : persons) {
+//            System.out.println(p.getId()+", "+p.getFirstName()+", "+p.getLastName());
+//        }
 
     }
 }

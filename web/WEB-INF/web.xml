@@ -5,7 +5,7 @@
          version="3.1">
     <servlet>
         <servlet-name>LoginController</servlet-name>
-        <servlet-class>Controllers.LoginController1</servlet-class>
+        <servlet-class>controllers.LoginController1</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -15,14 +15,19 @@
 
     <servlet>
         <servlet-name>Servlet_redirect</servlet-name>
-        <servlet-class>Servlet_redirect</servlet-class>
+        <servlet-class>controllers.Servlet_redirect</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>Servlet_redirect</servlet-name>
-        <url-pattern>/Servlet_redirect</url-pattern>
+        <url-pattern>/controllers.Servlet_redirect</url-pattern>
     </servlet-mapping>
 
 
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.htm</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
 
 </web-app>
