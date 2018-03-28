@@ -1,7 +1,7 @@
 <%--
   Created by IntelliJ IDEA.
   User: Ivelin Stoyanov
-  Date: 14.2.2018 г.
+  Date: 14.2.2018 Рі.
   Time: 16:26
   To change this template use File | Settings | File Templates.
 --%>
@@ -13,7 +13,8 @@
     <title>JSP Example</title>
 </head>
 <body bgcolor="silver">
-<form method="post" action="login.jsp">
+<%-- <form method="post" action="login.jsp"> --%>
+<form method="get" action="LoginController1.java">
     <center>
         <table border="0" width="30%" cellpadding="3">
             <thead>
@@ -31,8 +32,8 @@
                 <td><input type="password" name="password" value="" /></td>
             </tr>
             <tr>
-                <td><input type="submit" value="Login" /></td>
-                <td><input type="reset" value="Reset" /></td>
+                <td><input type="submit" name="submit" value="Login" /></td>
+                <td><input type="reset" name="reset" value="Reset" /></td>
             </tr>
             <tr>
                 <td colspan="2">New User <a href="register.jsp">Register Here</a></td>
@@ -42,4 +43,4 @@
     </center>
 </form>
 </body>
-</html>
+</html>>

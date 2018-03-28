@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: biba
+  controllers.User: biba
   Date: 28.02.18
   Time: 21:08
   To change this template use File | Settings | File Templates.
