@@ -5,7 +5,8 @@
   Time: 16:26
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,11 +26,15 @@
             <tbody>
             <tr>
                 <td>Username</td>
-                <td><input type="text" name="userName" value="" /></td>
+                <td><label>
+                    <input type="text" name="userName" value=""/>
+                </label></td>
             </tr>
             <tr>
                 <td>Password</td>
-                <td><input type="password" name="password" value="" /></td>
+                <td><label>
+                    <input type="password" name="password" value=""/>
+                </label></td>
             </tr>
             <tr>
                 <td><input type="submit" name="submit" value="Login" /></td>
