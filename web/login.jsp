@@ -18,6 +18,8 @@
     <tr>username="<%=request.getSession().getAttribute("username")%>"</tr>
     <br>
     <tr>password="<%=request.getSession().getAttribute("password")%>"</tr>
+    <br>
+    <%--<tr>users="<%=request.getSession().getAttribute("user")%>"</tr>--%>
 
     <c:if test="${sessionScope.firstname != null}">
         <p>heeeeeeellllllooooo</p>
@@ -25,7 +27,5 @@
 
 
 
-
-<%--<%= request.getParameter("person1.firstName") %>--%>
 </body>
 </html>

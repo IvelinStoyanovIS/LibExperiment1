@@ -2,6 +2,8 @@ package controllers;
 
 //import daoimpl.PersonDaoImpl;
 
+import dao.User_dao;
+
 import java.util.List;
 
 /**
@@ -11,9 +13,11 @@ public class App {
     public static void main(String [] args) {
 
 //        PersonDaoImpl pdi = new PersonDaoImpl();
+        User_dao dao_obj=new User_dao();
 
        /**Create table**/
  //       pdi.createPersonTable();
+        dao_obj.createPersonTable();
 
         /**Insert a new record**/
  //       Person person = new Person("John","Johnson");

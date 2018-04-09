@@ -1,6 +1,9 @@
 
 package controllers;
 
+import dao.User_dao;
+import entities.User;
+
 import javax.naming.Name;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,9 +14,11 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class LoginController1 extends HttpServlet {
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException {
 
-
+        User_dao dao=new User_dao();
+        dao.createPersonTable();
 
     }
 
@@ -25,13 +30,20 @@ public class LoginController1 extends HttpServlet {
         String loginURL = "login.jsp";
         HttpSession session = request.getSession();
 
+
+
+
         if(request.getParameter("submit")!= null)
         {
-            session.setAttribute("firstname", person1.username);
+            session.setAttribute("firstname", person1.getFirstName());
             response.sendRedirect(loginURL);
 
-            request.getSession().setAttribute("username", person1.username);
-            request.getSession().setAttribute("password", person1.password);
+            request.getSession().setAttribute("username", person1.getFirstName());
+            request.getSession().setAttribute("password", person1.getLastName());
+            //request.getSession().setAttribute("user", dao.selectAll());
+
+
+
 
             //out.print("<p>" + "Name: " + person1.username + "</p>");
             //out.println("<p>" + "Surname: " + "<b>" + person1.password + "</b></p>");
