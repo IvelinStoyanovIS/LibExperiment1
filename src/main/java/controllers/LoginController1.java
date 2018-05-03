@@ -17,8 +17,6 @@ public class LoginController1 extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException {
 
-        User_dao dao=new User_dao();
-        dao.createPersonTable();
 
     }
 
@@ -26,9 +24,13 @@ public class LoginController1 extends HttpServlet {
         String username = request.getParameter("userName");
         String password = request.getParameter("password");
         PrintWriter out = response.getWriter();
+        User_dao dao=new User_dao();
         User person1 = new User(username, password);
         String loginURL = "login.jsp";
         HttpSession session = request.getSession();
+
+
+
 
 
 
@@ -40,13 +42,11 @@ public class LoginController1 extends HttpServlet {
 
             request.getSession().setAttribute("username", person1.getFirstName());
             request.getSession().setAttribute("password", person1.getLastName());
-            //request.getSession().setAttribute("user", dao.selectAll());
+
+            //dao.createPersonTable();
+            dao.insert();
 
 
-
-
-            //out.print("<p>" + "Name: " + person1.username + "</p>");
-            //out.println("<p>" + "Surname: " + "<b>" + person1.password + "</b></p>");
         }
     }
 }

@@ -3,6 +3,7 @@ package dao;
 import util.ConnectionConfiguration;
 import entities.User;
 
+import java.io.PrintWriter;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +39,6 @@ public class User_dao {
             }
         }
     }
-
 
 
     public List<User> selectAll() {
@@ -90,4 +90,47 @@ public class User_dao {
 
         return persons;
     }
+
+
+    //public void insert(User person) {
+    public void insert() {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        System.out.println("hekllkkkdfjcs");
+
+
+        try {
+            connection = ConnectionConfiguration.getConnection();
+            preparedStatement = connection.prepareStatement("INSERT INTO person (first_name,last_name)" +
+                    "VALUES (?, ?)");
+            preparedStatement.setString(1, "wfrg");
+            preparedStatement.setString(2, "frghs");
+            preparedStatement.executeUpdate();
+            System.out.println("INSERT INTO person (first_name,last_name)" +
+                    "VALUES (?, ?)");
+            preparedStatement.execute("CREATE TABLE IF NOT EXISTS person (id int primary key unique auto_increment," +
+                    "first_name varchar(55), last_name varchar(55))");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (preparedStatement != null) {
+                try {
+                    preparedStatement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+
+
 }

@@ -17,11 +17,12 @@ public class App {
 
        /**Create table**/
  //       pdi.createPersonTable();
-        dao_obj.createPersonTable();
+ //       dao_obj.createPersonTable();
 
         /**Insert a new record**/
  //       Person person = new Person("John","Johnson");
  //       pdi.insert(person);
+        dao_obj.insert();
 
         /**Select by id**/
  //       Person personSelect = pdi.selectById(2);

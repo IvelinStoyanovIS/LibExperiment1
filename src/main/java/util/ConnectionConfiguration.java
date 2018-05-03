@@ -12,12 +12,37 @@ public class ConnectionConfiguration {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/uktcLib", "root", "Kwadrat4e!");
+            connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/uktcLib", "root", "Kwadrat4e!");
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         return connection;
     }
+
+
+
+
+//    public static Connection getConnection() {
+//        try  {
+//            Class.forName("com.mysql.jdbc.Driver");
+//            Connection con = DriverManager.getConnection
+//                    ("jdbc:mysql://127.0.0.1:3306/uktcLib",
+//                            "root", "Kwadrat4e!");
+//            return con;
+//        }
+//        catch(Exception ex) {
+//            System.out.println("Database.getConnection() Error -->" + ex.getMessage());
+//            return null;
+//        }
+//    }
+//
+//    public static void close(Connection con) {
+//        try  {
+//            con.close();
+//        }
+//        catch(Exception ex) {
+//        }
+//    }
 
 }
