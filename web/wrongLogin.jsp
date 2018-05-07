@@ -48,6 +48,8 @@
         </table>
 
 
+        <tr>"<%=request.getSession().getAttribute("wrong_login")%>"</tr>
+
 
 
         <c:if test="${sessionScope.username != null}">

@@ -19,11 +19,11 @@
     <br>
     <tr>password="<%=request.getSession().getAttribute("password")%>"</tr>
     <br>
-    <%--<tr>users="<%=request.getSession().getAttribute("user")%>"</tr>--%>
 
-    <c:if test="${sessionScope.firstname != null}">
-        <p>heeeeeeellllllooooo</p>
+    <c:if test="${sessionScope.username == null}">
+        <c:redirect url="index.jsp"/>
     </c:if>
+
 
 
 

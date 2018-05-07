@@ -2,8 +2,9 @@ package entities;
 
 public class User {
     private int id;
-    private String firstName;
-    private String lastName;
+    private String userName;
+    private String password;
+    private String hashedPassword;
 
 
     public User()
@@ -11,9 +12,10 @@ public class User {
 
     }
 
-    public User(String firstName,String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public User(String userName,String password, String hasedPassword) {
+        this.userName = userName;
+        this.password = password;
+        this.hashedPassword=hasedPassword;
     }
 
 
@@ -25,19 +27,27 @@ public class User {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getPassword() {
+        return password;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getHashedPassword() {
+        return hashedPassword;
+    }
+
+    public void setHashedPassword(String hasedPassword) {
+        this.hashedPassword = hasedPassword;
     }
 }

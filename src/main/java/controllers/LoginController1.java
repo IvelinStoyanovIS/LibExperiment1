@@ -3,8 +3,6 @@ package controllers;
 
 import dao.User_dao;
 import entities.User;
-
-import javax.naming.Name;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,28 +19,32 @@ public class LoginController1 extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException {
+        User_dao dao=new User_dao();
         String username = request.getParameter("userName");
         String password = request.getParameter("password");
+        String hashedPass = dao.hash(password);
         PrintWriter out = response.getWriter();
-        User_dao dao=new User_dao();
-        User person1 = new User(username, password);
+        User user1 = new User(username, password, hashedPass);
         String loginURL = "login.jsp";
+        String indexURL = "index.jsp";
+        String wrongLoginURL="wrongLogin.jsp";
         HttpSession session = request.getSession();
-
+        boolean personSelect;
 
 
         if(request.getParameter("submit")!= null)
         {
-            session.setAttribute("firstname", person1.getFirstName());
-            response.sendRedirect(loginURL);
 
-            request.getSession().setAttribute("username", person1.getFirstName());
-            request.getSession().setAttribute("password", person1.getLastName());
-
-
-            boolean personSelect = dao.selectByUName(person1);
-
-
+                personSelect = dao.selectByUName(user1);
+                if (personSelect == true) {
+                    response.sendRedirect(loginURL);
+                    session.setAttribute("firstname", user1.getUserName());
+                    request.getSession().setAttribute("username", user1.getUserName());
+                    request.getSession().setAttribute("password", user1.getPassword());
+                } else {
+                    response.sendRedirect(wrongLoginURL);
+                    request.getSession().setAttribute("wrong_login", "Wrong username or password");
+                }
         }
     }
 }
