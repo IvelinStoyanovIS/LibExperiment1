@@ -22,7 +22,6 @@ public class App {
         /**Insert a new record**/
  //       Person person = new Person("John","Johnson");
  //       pdi.insert(person);
-        dao_obj.insert();
 
         /**Select by id**/
  //       Person personSelect = pdi.selectById(2);

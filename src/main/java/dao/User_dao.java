@@ -92,19 +92,18 @@ public class User_dao {
     }
 
 
-    //public void insert(User person) {
-    public void insert() {
+    public void insert(User person) {
+        //public void insert() {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        System.out.println("hekllkkkdfjcs");
 
 
         try {
             connection = ConnectionConfiguration.getConnection();
             preparedStatement = connection.prepareStatement("INSERT INTO person (first_name,last_name)" +
                     "VALUES (?, ?)");
-            preparedStatement.setString(1, "wfrg");
-            preparedStatement.setString(2, "frghs");
+            preparedStatement.setString(1, person.getFirstName());
+            preparedStatement.setString(2, person.getLastName());
             preparedStatement.executeUpdate();
             System.out.println("INSERT INTO person (first_name,last_name)" +
                     "VALUES (?, ?)");
@@ -132,5 +131,62 @@ public class User_dao {
     }
 
 
+    public boolean selectByUName(User person) {
+        User person1 = new User();
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
 
+
+        try {
+            connection = ConnectionConfiguration.getConnection();
+            preparedStatement = connection.prepareStatement("SELECT person_id, first_name, last_name FROM person WHERE first_name = ?");
+            preparedStatement.setString(1, person.getFirstName());
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                person1.setId(resultSet.getInt("person_id"));
+                person1.setFirstName(resultSet.getString("first_name"));
+                person1.setLastName(resultSet.getString("last_name"));
+
+            }
+            if(person.getLastName().equals(person1.getLastName())) {
+                System.out.println("true");
+                return true;
+            }
+            System.out.println("false");
+            return false;
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+
+                }
+            }
+            if (preparedStatement != null) {
+                try {
+                    preparedStatement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+
+                }
+
+            }
+        }
+
+    }
 }

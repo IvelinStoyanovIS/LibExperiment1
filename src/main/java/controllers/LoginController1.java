@@ -31,10 +31,6 @@ public class LoginController1 extends HttpServlet {
 
 
 
-
-
-
-
         if(request.getParameter("submit")!= null)
         {
             session.setAttribute("firstname", person1.getFirstName());
@@ -43,8 +39,8 @@ public class LoginController1 extends HttpServlet {
             request.getSession().setAttribute("username", person1.getFirstName());
             request.getSession().setAttribute("password", person1.getLastName());
 
-            //dao.createPersonTable();
-            dao.insert();
+
+            boolean personSelect = dao.selectByUName(person1);
 
 
         }
