@@ -31,10 +31,8 @@ public class LoginController1 extends HttpServlet {
         HttpSession session = request.getSession();
         boolean personSelect;
 
-
         if(request.getParameter("submit")!= null)
         {
-
                 personSelect = dao.selectByUName(user1);
                 if (personSelect == true) {
                     response.sendRedirect(loginURL);

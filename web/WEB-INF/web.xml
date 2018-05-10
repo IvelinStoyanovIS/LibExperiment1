@@ -7,14 +7,17 @@
 
 
     <servlet>
-        <servlet-name>LoginController</servlet-name>
-        <servlet-class>controllers.LoginController1</servlet-class>
+        <servlet-name>BookController</servlet-name>
+        <servlet-class>controllers.BookController</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>LoginController</servlet-name>
+        <servlet-name>BookController</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
+
+
 
     <servlet>
         <servlet-name>Servlet_redirect</servlet-name>
@@ -31,10 +34,7 @@
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
-    <resource-env-ref>
-        <resource-env-ref-name>jdbc/uktcLib</resource-env-ref-name>
-        <resource-env-ref-type>javax.sql.DataSource</resource-env-ref-type>
-    </resource-env-ref>
+
 
 
 </web-app>

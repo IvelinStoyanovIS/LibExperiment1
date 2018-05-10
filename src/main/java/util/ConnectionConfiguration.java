@@ -12,7 +12,7 @@ public class ConnectionConfiguration {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/uktcLib", "root", "Kwadrat4e!");
+            connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/uktcLib", "root", "789456123");
         } catch (Exception e) {
             e.printStackTrace();
         }
