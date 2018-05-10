@@ -16,7 +16,7 @@
 </head>
 <body bgcolor="silver">
 <%-- <form method="post" action="login.jsp"> --%>
-<form method="get" action="LoginController1.java">
+<form method="post" action="LoginController1.java">
     <center>
         <table border="0" width="30%" cellpadding="3">
             <thead>

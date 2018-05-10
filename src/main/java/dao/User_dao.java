@@ -2,17 +2,20 @@ package dao;
 
 import util.ConnectionConfiguration;
 import entities.User;
+
+import java.math.BigInteger;
 import java.security.MessageDigest;
 import javax.xml.bind.DatatypeConverter;
 
 import java.io.PrintWriter;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class User_dao {
-    public String hash(String pass) {
 
+    public String hash(String pass) {
         MessageDigest md;
         byte[] hash = null;
         try {
@@ -23,6 +26,7 @@ public class User_dao {
         }
         return DatatypeConverter.printHexBinary(hash);
     }
+
 
     public void createPersonTable() {
         Connection connection = null;
@@ -180,10 +184,8 @@ public class User_dao {
 //            }
             if(person.getHashedPassword().equals(person1.getHashedPassword()))
             {
-                System.out.println("true");
                 return true;
             }
-            System.out.println("false");
             return false;
 
 
