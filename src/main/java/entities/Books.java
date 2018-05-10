@@ -5,6 +5,16 @@ package entities;
  */
 public class Books {
     private int id;
+
+    public String getBookBarcode() {
+        return BookBarcode;
+    }
+
+    public void setBookBarcode(String bookBarcode) {
+        BookBarcode = bookBarcode;
+    }
+
+    private String BookBarcode;
     private String BookName;
     private String BookAutor;
     private String BookGenre;

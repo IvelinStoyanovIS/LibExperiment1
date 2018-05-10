@@ -35,6 +35,8 @@
         </script><br><br>
 
         <input type="submit" value="Потвърди"><br><br>
+        <label for="BookBarcode" class="redstar"> Баркод на книгата:</label><br>
+        <input type="text" name="BookBarcode" required> <br>
         <label for="BookName" class="redstar"> Име на книгата:</label><br>
         <input type="text" name="BookName" required> <br>
         <label for="BookAutor" class="redstar">Автор:</label><br>

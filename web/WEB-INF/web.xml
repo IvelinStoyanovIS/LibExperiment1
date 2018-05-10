@@ -7,12 +7,12 @@
 
 
     <servlet>
-        <servlet-name>BookController</servlet-name>
-        <servlet-class>controllers.BookController</servlet-class>
+        <servlet-name>SearchBookController</servlet-name>
+        <servlet-class>controllers.SearchBookController</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>BookController</servlet-name>
+        <servlet-name>SearchBookController</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 

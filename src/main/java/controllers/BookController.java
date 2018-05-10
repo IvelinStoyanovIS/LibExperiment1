@@ -21,6 +21,7 @@ import java.util.ArrayList;
 public class BookController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Books_dao daobook=new Books_dao();
+        String BookBarcode = request.getParameter("BookBarcode");
         String BookName = request.getParameter("BookName");
         String BookAutor = request.getParameter("BookAutor");
         String BookGenre = request.getParameter("BookGenre");
@@ -30,6 +31,7 @@ public class BookController extends HttpServlet {
         String BookImage = request.getParameter("BookImage");
         PrintWriter out = response.getWriter();
         Books book1 = new Books();
+        book1.setBookBarcode(BookBarcode);
         book1.setBookName(BookName);
         book1.setBookAutor(BookAutor);
         book1.setBookGenre(BookGenre);
@@ -58,7 +60,8 @@ public class BookController extends HttpServlet {
 
         for (int i = 0; i < allBooks.size(); i++) {
             out.println("Book " + i + ": ");
-            out.print(allBooks.get(i).getBookName());
+            out.print(allBooks.get(i).getBookBarcode());
+            out.print(" | " + allBooks.get(i).getBookName());
             out.print(" | " + allBooks.get(i).getBookAutor());
             out.print(" | " + allBooks.get(i).getBookGenre());
             out.print(" | " + allBooks.get(i).getBookPublisher());
