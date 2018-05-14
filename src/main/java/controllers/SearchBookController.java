@@ -14,7 +14,7 @@ import java.io.PrintWriter;
 /**
  * Created by Ivelin Stoyanov on 10.5.2018 г..
  */
-@WebServlet( name = "SearchBookController" )
+@WebServlet( name = "SearchBookController", value="/SearchBookController" )
 public class SearchBookController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String Barcode = request.getParameter("barcode");

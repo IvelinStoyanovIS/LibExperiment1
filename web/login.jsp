@@ -14,7 +14,7 @@
 
 </head>
 <body>
-<form method="post" action="LogoutController.java">
+<form method="post" action="LogoutController">
     <p>loooooogggedddd</p>
 <tr>username="<%=request.getSession().getAttribute("username")%>"</tr>
 <br>

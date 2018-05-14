@@ -17,7 +17,7 @@ import java.util.ArrayList;
 /**
  * Created by Ivelin Stoyanov on 9.5.2018 г..
  */
-@WebServlet( name = "BookController" )
+@WebServlet( name = "BookController", urlPatterns={"/BookController"} )
 public class BookController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Books_dao daobook=new Books_dao();
