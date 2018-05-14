@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Ivelin Stoyanov
@@ -55,7 +56,9 @@
 
         <br> <input type="submit" value="Потвърди">
     </div>
-
+    <c:if test="${sessionScope.username == null}">
+        <c:redirect url="index.jsp"/>
+    </c:if>
 </form>
 
 </body>

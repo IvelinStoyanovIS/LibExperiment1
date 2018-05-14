@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: x
@@ -24,6 +25,9 @@
                 </td>
             </tr>
         </table>
+        <c:if test="${sessionScope.username == null}">
+            <c:redirect url="index.jsp"/>
+        </c:if>
     </form>
 </div>
 </body>
