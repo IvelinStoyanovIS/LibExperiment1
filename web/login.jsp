@@ -14,14 +14,18 @@
 
 </head>
 <body>
-<form method="post" action="LogoutController">
+<form method="post" action="MainRedirecting">
     <p>loooooogggedddd</p>
-<tr>username="<%=request.getSession().getAttribute("username")%>"</tr>
-<br>
-<tr>password="<%=request.getSession().getAttribute("password")%>"</tr>
-<br>
-<td><input type="submit" name="logout" value="Log out" /></td>
-<br>
+    <tr>username="<%=request.getSession().getAttribute("username")%>"</tr>
+    <br>
+    <tr>password="<%=request.getSession().getAttribute("password")%>"</tr>
+    <br>
+    <td><input type="submit" name="logout" value="Log out" /></td>
+    <br>
+    <td><input type="submit" name="addbook" value="Add Book" /></td>
+    <br>
+    <td><input type="submit" name="serchbook" value="Search Book" /></td>
+    <br>
 
 <c:if test="${sessionScope.username == null}">
 <c:redirect url="index.jsp"/>

@@ -16,12 +16,12 @@ public class LogoutController extends HttpServlet {
 
         String indexURL = "index.jsp";
 
-        if(request.getParameter("logout") != null)
-        {
+        //if(request.getParameter("logout") != null)
+        //{
             ses.removeAttribute("username");
             ses.invalidate();
             response.sendRedirect(indexURL);
-        }
+        //}
 
     }
 
