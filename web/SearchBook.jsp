@@ -13,7 +13,7 @@
 </head>
 <body>
 <div id="login_form">
-    <form name="f1" action="SearchBookController" method="POST" id="f1">
+    <form name="f1" action="StudentController" method="POST" id="f1">
         <table>
             <tr>
                 <td class="f1_label">Баркод :</td><td><input type="text" name="barcode" value="" maxlength="10"/>

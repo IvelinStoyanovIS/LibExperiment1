@@ -11,6 +11,9 @@
     <title>Show Book Page</title>
 </head>
 <body>
+<h3> Book name is ${name}</h3>
+<h3> Book autor is ${autor}</h3>
+<h3> Book genre is ${genre}</h3>
 
 </body>
 </html>

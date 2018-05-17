@@ -20,6 +20,8 @@ import java.util.ArrayList;
 @WebServlet( name = "BookController", urlPatterns={"/BookController"} )
 public class BookController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
         Books_dao daobook=new Books_dao();
         String BookBarcode = request.getParameter("BookBarcode");
         String BookName = request.getParameter("BookName");
