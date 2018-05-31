@@ -26,6 +26,8 @@
     <br>
     <td><input type="submit" name="serchbook" value="Search Book" /></td>
     <br>
+    <td><input type="submit" name="searchstudent" value="Search Student" /></td>
+    <br>
 
 <c:if test="${sessionScope.username == null}">
 <c:redirect url="index.jsp"/>
