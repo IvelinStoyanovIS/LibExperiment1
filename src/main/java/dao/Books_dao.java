@@ -1,6 +1,7 @@
 package dao;
 
 import java.awt.print.Book;
+import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,6 +14,8 @@ import java.util.logging.Logger;
 import entities.Books;
 import util.ConnectionConfiguration;
 
+import javax.servlet.http.Part;
+
 
 /**
  * Created by Ivelin Stoyanov on 9.5.2018 г..
@@ -20,14 +23,30 @@ import util.ConnectionConfiguration;
 
 public class Books_dao {
         private final Connection conn = ConnectionConfiguration.getConnection();
-        private final String SQL_CREATE_BOOK = "INSERT INTO books (BookBarcode, BookName, BookAutor, BookGenre, BookPublisher, BookDescription, BookDate, BookImage) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        private final String SQL_CREATE_BOOK = "INSERT INTO books (BookBarcode, BookName, BookAutor, BookGenre, BookPublisher, BookDescription, BookDate, BookImage, file) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         private final String SQL_GET_BOOK_BY_ID = "SELECT * FROM books WHERE id=?";
         private final String SQL_GET_ALL_BOOK = "SELECT * FROM books";
         private final String SQL_UPDATE_BOOK = "UPDATE books SET BookBarcode=? BookName=?, BookAutor=?, BookGenre=?, BookPublisher=?, BookDescription=?, BookDate=?, BookImage=? WHERE id=?";
         private final String SQL_DELETE_BOOK = "DELETE FROM books WHERE id=?";
         private final String SQL_GET_BOOK_BY_BARCODE = "SELECT * FROM books WHERE BookBarcode=?";
 
-        public void createBook(Books book) {
+
+
+
+    public String extractFileName(Part part) {
+        String contentDisp = part.getHeader("content-disposition");
+        String[] items = contentDisp.split(";");
+        for (String s : items) {
+            if (s.trim().startsWith("filename")) {
+                return s.substring(s.indexOf("=") + 2, s.length()-1);
+            }
+        }
+        return "";
+    }
+
+
+
+        public void createBook(Books book,  String savePath, String fileName) {
             try (PreparedStatement pstmt = conn.prepareStatement(SQL_CREATE_BOOK, Statement.RETURN_GENERATED_KEYS)) {
                 pstmt.setString(1, book.getBookBarcode());
                 pstmt.setString(2, book.getBookName());
@@ -37,6 +56,8 @@ public class Books_dao {
                 pstmt.setString(6, book.getBookDescription());
                 pstmt.setString(7, book.getBookDate());
                 pstmt.setString(8, book.getBookImage());
+                String filePath= savePath + File.separator + fileName ;
+                pstmt.setString(9,filePath);
                 pstmt.executeUpdate();
                 try (ResultSet generatedKeys = pstmt.getGeneratedKeys()) {
                     if (generatedKeys.next()) {

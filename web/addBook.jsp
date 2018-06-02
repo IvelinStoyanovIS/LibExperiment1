@@ -16,7 +16,7 @@
 </head>
 
 <body>
-<form action="BookController" method="POST">
+<form action="BookController" method="POST" enctype="multipart/form-data">
     <legend>Въвеждане на книга</legend>
     <div class="form">
         Задължителните полета са със <font color="red">*</font><br><br>
@@ -53,6 +53,7 @@
         <input type="text" name="BookDate"><br>
         <label for="BookImage">Снимка:</label><br>
         <input type="text" name="BookImage"><br>
+        <input type="file" name="file" id="ImageFile" />
 
         <br> <input type="submit" value="Потвърди">
     </div>

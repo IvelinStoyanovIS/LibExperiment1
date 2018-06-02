@@ -5,11 +5,10 @@ import entities.Books;
 
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -18,10 +17,24 @@ import java.util.ArrayList;
  * Created by Ivelin Stoyanov on 9.5.2018 г..
  */
 @WebServlet( name = "BookController", urlPatterns={"/BookController"} )
+@MultipartConfig(fileSizeThreshold=1024*1024*2, // 2MB
+        maxFileSize=1024*1024*10,      // 10MB
+        maxRequestSize=1024*1024*50)
 public class BookController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
+
+
+        String SAVE_DIR="images";
+
+        String savePath = "home/biba/IdeaProjects/lib2/LibExperiment1/web" + File.separator + SAVE_DIR;
+        File fileSaveDir=new File(savePath);
+        if(!fileSaveDir.exists()){
+            fileSaveDir.mkdir();
+        }
+
+
         Books_dao daobook=new Books_dao();
         String BookBarcode = request.getParameter("BookBarcode");
         String BookName = request.getParameter("BookName");
@@ -44,6 +57,10 @@ public class BookController extends HttpServlet {
         String addBookURL = "addBook.jsp";
         String showBookURL = "ShowBook.jsp";
 
+        Part part=request.getPart("file");
+        String fileName=daobook.extractFileName(part);
+
+
        /* out.println(book1.getId());
         out.println(book1.getBookName());
         out.println(book1.getBookAutor());
@@ -54,7 +71,7 @@ public class BookController extends HttpServlet {
         out.println(book1.getBookImage()); */
 
 
-        daobook.createBook(book1);
+        daobook.createBook(book1, savePath, fileName);
 
         daobook.getAllBooks();
         ArrayList<Books> allBooks = daobook.getAllBooks();
