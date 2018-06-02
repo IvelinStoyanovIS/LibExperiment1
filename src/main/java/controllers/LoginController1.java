@@ -26,7 +26,6 @@ public class LoginController1 extends HttpServlet {
         PrintWriter out = response.getWriter();
         User user1 = new User(username, password, hashedPass);
         String loginURL = "login.jsp";
-        String indexURL = "index.jsp";
         String wrongLoginURL = "wrongLogin.jsp";
         HttpSession session = request.getSession();
         boolean personSelect;

@@ -19,7 +19,7 @@ public class User_dao {
         MessageDigest md;
         byte[] hash = null;
         try {
-            md = MessageDigest.getInstance("MD5");
+            md = MessageDigest.getInstance("SHA-256");
             hash = md.digest(pass.getBytes("UTF-8"));
         } catch (Exception e) {
             e.printStackTrace();
@@ -177,11 +177,6 @@ public class User_dao {
 
             }
 
-//            if(person.getPassword().equals(person1.getPassword()))
-//            {
-//                System.out.println("true");
-//                return true;
-//            }
             if(person.getHashedPassword().equals(person1.getHashedPassword()))
             {
                 return true;
@@ -221,8 +216,6 @@ public class User_dao {
         }
 
     }
-
-
 
 }
 

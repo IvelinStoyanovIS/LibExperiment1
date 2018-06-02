@@ -11,9 +11,14 @@
     <title>Show Book Page</title>
 </head>
 <body>
-<h3> Book name is ${name}</h3>
-<h3> Book autor is ${autor}</h3>
-<h3> Book genre is ${genre}</h3>
+<h3> Book id is ${bookid}</h3>
+<h3> Book name is ${bookname}</h3>
+<h3> Book author is ${bookauthor}</h3>
+<h3> Book genre is ${bookgenre}</h3>
+<h3> Book publisher is ${bookpublisher}</h3>
+<h3> Book description: ${bookdescription}</h3>
+<h3> Book date is ${bookdate}</h3>
+<h3> Book image: ${bookimage}</h3>
 
 </body>
 </html>

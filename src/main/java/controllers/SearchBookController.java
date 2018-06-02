@@ -3,6 +3,7 @@ package controllers;
 import dao.Books_dao;
 import entities.Books;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,22 +26,34 @@ public class SearchBookController extends HttpServlet {
         book1 = daobook.getBookByBarcode(Barcode);
         HttpSession session = request.getSession();
         String indexURL = "index.jsp";
+        RequestDispatcher rd;
 
-            out.println("DB id: " + book1.getId());
-            out.println("----------------------");
-            out.println("Name: " + book1.getBookName());
-            out.println("----------------------");
-            out.println("Autor: " + book1.getBookAutor());
-            out.println("----------------------");
-            out.println("Genre: " + book1.getBookGenre());
-            out.println("----------------------");
-            out.println("Publisher: " + book1.getBookPublisher());
-            out.println("----------------------");
-            out.println("Description: " + book1.getBookDescription());
-            out.println("----------------------");
-            out.println("Date: " + book1.getBookDate());
-            out.println("----------------------");
-            out.println("Image: " + book1.getBookImage());
+//            out.println("DB id: " + book1.getId());
+//            out.println("----------------------");
+//            out.println("Name: " + book1.getBookName());
+//            out.println("----------------------");
+//            out.println("Autor: " + book1.getBookAutor());
+//            out.println("----------------------");
+//            out.println("Genre: " + book1.getBookGenre());
+//            out.println("----------------------");
+//            out.println("Publisher: " + book1.getBookPublisher());
+//            out.println("----------------------");
+//            out.println("Description: " + book1.getBookDescription());
+//            out.println("----------------------");
+//            out.println("Date: " + book1.getBookDate());
+//            out.println("----------------------");
+//            out.println("Image: " + book1.getBookImage());
+
+            request.setAttribute("bookid", book1.getId());
+            request.setAttribute("bookname", book1.getBookName());
+            request.setAttribute("bookauthor", book1.getBookAutor());
+            request.setAttribute("bookgenre", book1.getBookGenre());
+            request.setAttribute("bookpublisher", book1.getBookPublisher());
+            request.setAttribute("bookdescription", book1.getBookDescription());
+            request.setAttribute("bookdate", book1.getBookDate());
+            request.setAttribute("bookimage", book1.getBookImage());
+            rd = request.getRequestDispatcher("ShowBook.jsp");
+            rd.forward(request, response);
 
     }
 
