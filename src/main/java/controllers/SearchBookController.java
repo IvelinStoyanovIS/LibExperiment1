@@ -22,7 +22,7 @@ public class SearchBookController extends HttpServlet {
         String Barcode = request.getParameter("barcode");
         PrintWriter out = response.getWriter();
         Books_dao daobook=new Books_dao();
-        Books book1 = new Books();
+        Books book1;// = new Books();
         book1 = daobook.getBookByBarcode(Barcode);
         HttpSession session = request.getSession();
         String indexURL = "index.jsp";
@@ -43,7 +43,7 @@ public class SearchBookController extends HttpServlet {
 //            out.println("Date: " + book1.getBookDate());
 //            out.println("----------------------");
 //            out.println("Image: " + book1.getBookImage());
-
+        System.out.println(book1.getPathImage());
             request.setAttribute("bookid", book1.getId());
             request.setAttribute("bookname", book1.getBookName());
             request.setAttribute("bookauthor", book1.getBookAutor());
@@ -52,6 +52,8 @@ public class SearchBookController extends HttpServlet {
             request.setAttribute("bookdescription", book1.getBookDescription());
             request.setAttribute("bookdate", book1.getBookDate());
             request.setAttribute("bookimage", book1.getBookImage());
+            request.setAttribute("path", book1.getPathImage());
+            //System.out.println(book1.getPathImage());
             rd = request.getRequestDispatcher("ShowBook.jsp");
             rd.forward(request, response);
 

@@ -19,6 +19,9 @@
 <h3> Book description: ${bookdescription}</h3>
 <h3> Book date is ${bookdate}</h3>
 <h3> Book image: ${bookimage}</h3>
+<h3> Book path image: ${path}</h3>
+
+<img src="${path}" alt="Smileyface" width="100" height="100">
 
 </body>
 </html>

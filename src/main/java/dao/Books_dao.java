@@ -46,7 +46,7 @@ public class Books_dao {
 
 
 
-        public void createBook(Books book,  String savePath, String fileName) {
+        public void createBook(Books book) {
             try (PreparedStatement pstmt = conn.prepareStatement(SQL_CREATE_BOOK, Statement.RETURN_GENERATED_KEYS)) {
                 pstmt.setString(1, book.getBookBarcode());
                 pstmt.setString(2, book.getBookName());
@@ -56,8 +56,7 @@ public class Books_dao {
                 pstmt.setString(6, book.getBookDescription());
                 pstmt.setString(7, book.getBookDate());
                 pstmt.setString(8, book.getBookImage());
-                String filePath= savePath + File.separator + fileName ;
-                pstmt.setString(9,filePath);
+                pstmt.setString(9,book.getPathImage());
                 pstmt.executeUpdate();
                 try (ResultSet generatedKeys = pstmt.getGeneratedKeys()) {
                     if (generatedKeys.next()) {
@@ -156,6 +155,7 @@ public class Books_dao {
                     book.setBookDescription(rs.getString(7));
                     book.setBookDate(rs.getString(8));
                     book.setBookImage(rs.getString(9));
+                    book.setPathImage(rs.getString(10));
                 }
             }
         } catch (SQLException ex) {

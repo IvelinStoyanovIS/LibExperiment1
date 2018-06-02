@@ -26,9 +26,8 @@ public class BookController extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 
 
-        String SAVE_DIR="images";
-
-        String savePath = "home/biba/IdeaProjects/lib2/LibExperiment1/web" + File.separator + SAVE_DIR;
+        String savePath = "images";
+        //String savePath = "/home/biba/IdeaProjects/lib2/LibExperiment1/web" + File.separator + SAVE_DIR;
         File fileSaveDir=new File(savePath);
         if(!fileSaveDir.exists()){
             fileSaveDir.mkdir();
@@ -70,8 +69,13 @@ public class BookController extends HttpServlet {
         out.println(book1.getBookDate());
         out.println(book1.getBookImage()); */
 
+        String filePath= savePath + File.separator + fileName ;
 
-        daobook.createBook(book1, savePath, fileName);
+        book1.setPathImage(filePath);
+
+        daobook.createBook(book1);
+
+
 
         daobook.getAllBooks();
         ArrayList<Books> allBooks = daobook.getAllBooks();
@@ -86,7 +90,9 @@ public class BookController extends HttpServlet {
             out.print(" | " + allBooks.get(i).getBookPublisher());
             out.print(" | " + allBooks.get(i).getBookDescription());
             out.print(" | " + allBooks.get(i).getBookDate());
-            out.println(" | " + allBooks.get(i).getBookImage());
+            out.print(" | " + allBooks.get(i).getBookImage());
+            out.println(" | " + allBooks.get(i).getPathImage());
+            System.out.println(book1.getPathImage());
         }
 
     }

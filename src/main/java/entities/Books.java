@@ -5,15 +5,6 @@ package entities;
  */
 public class Books {
     private int id;
-
-    public String getBookBarcode() {
-        return BookBarcode;
-    }
-
-    public void setBookBarcode(String bookBarcode) {
-        BookBarcode = bookBarcode;
-    }
-
     private String BookBarcode;
     private String BookName;
     private String BookAutor;
@@ -22,14 +13,23 @@ public class Books {
     private String BookDescription;
     private String BookDate;
     private String BookImage;
+    private String PathImage;
 
-    public Books(){
+    //public Books(){
 
+    //}
+    //public Books(String bookName, String bookAutor, String bookGenre, String bookPublisher, String bookDescription, String bookDate, String bookImage, String PathImage) {
+
+    //}
+
+
+    public String getBookBarcode() {
+        return BookBarcode;
     }
-    public Books(String bookName, String bookAutor, String bookGenre, String bookPublisher, String bookDescription, String bookDate, String bookImage) {
 
+    public void setBookBarcode(String bookBarcode) {
+        BookBarcode = bookBarcode;
     }
-
 
     public int getId() {
         return id;
@@ -94,5 +94,9 @@ public class Books {
     public void setBookImage(String bookImage) {
         BookImage = bookImage;
     }
+
+    public String getPathImage() { return PathImage; }
+
+    public void setPathImage(String pathImage) { PathImage = pathImage; }
 
 }
