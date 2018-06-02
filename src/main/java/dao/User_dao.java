@@ -21,7 +21,8 @@ public class User_dao {
         try {
             md = MessageDigest.getInstance("SHA-256");
             hash = md.digest(pass.getBytes("UTF-8"));
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
             e.printStackTrace();
         }
         return DatatypeConverter.printHexBinary(hash);
