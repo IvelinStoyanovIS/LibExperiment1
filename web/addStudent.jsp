@@ -1,0 +1,32 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: biba
+  Date: 03.06.18
+  Time: 10:21
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>Title</title>
+</head>
+<body>
+<form action="StudentController" method="POST" enctype="multipart/form-data">
+
+    <label for="StudentName" class="redstar"> ****Имена на ученик:</label><br>
+    <input type="text" name="StudentName" maxlength="255" required="required"> <br>
+    <label for="StudentCourseNumb" class="redstar" > ****Курсов номер:</label><br>
+    <input type="number" name="StudentCourseNumb" maxlength="255" required="required"> <br>
+    <label for="StudentEmail" class="redstar">****E-mail:</label><br>
+    <input type="text" name="StudentEmail"  maxlength="255" required="required"><br>
+    <%--<label for="StudentReadBooks">прочетени книги:</label><br>
+    <input type="number" name="StudentReadBooks"><br>
+    <label for="StudentCurrentBook">Текуща книга:</label><br>
+    <input type="text" name="StudentCurrentBook" maxlength="255"><br>--%>
+    <input type="file" name="file" id="ImageFile"/><br>
+
+    <br> <input type="submit" value="Потвърди">
+
+
+</body>
+</html>
