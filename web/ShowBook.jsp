@@ -23,5 +23,10 @@
 
 <img src="${path}" alt="Smileyface" width="100" height="100">
 
+
+<c:if test="${sessionScope.username == null}">
+    <c:redirect url="index.jsp"/>
+</c:if>
+
 </body>
 </html>

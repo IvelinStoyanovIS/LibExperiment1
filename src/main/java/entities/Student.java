@@ -4,11 +4,15 @@ package entities;
  * Created by Ivelin Stoyanov on 14.5.2018 г..
  */
 public class Student {
+
+
+    private int id;
     private String name;
-    private String facNum;
-    private int numberReadBooks;
+    private String courseNumb;
+    private int readBooks;
     private String email;
-    private boolean takenBook;
+    private String currentBook;
+    private String PathImage;
 
     public String getName() {
         return name;
@@ -18,20 +22,20 @@ public class Student {
         this.name = name;
     }
 
-    public String getFacNum() {
-        return facNum;
+    public String getCourseNumb() {
+        return courseNumb;
     }
 
-    public void setFacNum(String facNum) {
-        this.facNum = facNum;
+    public void setCourseNumb(String courseNumb) {
+        this.courseNumb = courseNumb;
     }
 
-    public int getNumberReadBooks() {
-        return numberReadBooks;
+    public int getReadBooks() {
+        return readBooks;
     }
 
-    public void setNumberReadBooks(int numberReadBooks) {
-        this.numberReadBooks = numberReadBooks;
+    public void setReadBooks(int readBooks) {
+        this.readBooks = readBooks;
     }
 
     public String getEmail() {
@@ -42,11 +46,25 @@ public class Student {
         this.email = email;
     }
 
-    public boolean isTakenBook() {
-        return takenBook;
+    public String getCurrntBook() { return currentBook; }
+
+    public void setCurrntBook(String currentBook) {
+        this.currentBook = currentBook;
     }
 
-    public void setTakenBook(boolean takenBook) {
-        this.takenBook = takenBook;
+    public String getPathImage() {
+        return PathImage;
+    }
+
+    public void setPathImage(String pathImage) {
+        PathImage = pathImage;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

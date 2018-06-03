@@ -43,7 +43,7 @@ public class SearchBookController extends HttpServlet {
 //            out.println("Date: " + book1.getBookDate());
 //            out.println("----------------------");
 //            out.println("Image: " + book1.getBookImage());
-        System.out.println(book1.getPathImage());
+
             request.setAttribute("bookid", book1.getId());
             request.setAttribute("bookname", book1.getBookName());
             request.setAttribute("bookauthor", book1.getBookAutor());

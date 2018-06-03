@@ -27,7 +27,6 @@ public class BookController extends HttpServlet {
 
 
         String savePath = "images";
-        //String savePath = "/home/biba/IdeaProjects/lib2/LibExperiment1/web" + File.separator + SAVE_DIR;
         File fileSaveDir=new File(savePath);
         if(!fileSaveDir.exists()){
             fileSaveDir.mkdir();
@@ -58,24 +57,24 @@ public class BookController extends HttpServlet {
 
         Part part=request.getPart("file");
         String fileName=daobook.extractFileName(part);
-
-
-       /* out.println(book1.getId());
-        out.println(book1.getBookName());
-        out.println(book1.getBookAutor());
-        out.println(book1.getBookGenre());
-        out.println(book1.getBookPublisher());
-        out.println(book1.getBookDescription());
-        out.println(book1.getBookDate());
-        out.println(book1.getBookImage()); */
-
         String filePath= savePath + File.separator + fileName ;
-
         book1.setPathImage(filePath);
 
         daobook.createBook(book1);
 
-
+//        if(request.getParameter("yesno") != null)
+//        {
+//            String checked=null;
+//            if(request.getParameter("yesno").equals("yes")) {
+//                checked="checked"
+//                out.println("Radio button 1 was selected.<BR>");
+//               // modelMap.put("checkBoxChecked",checked);
+//            }
+//            if(request.getParameter("radios").equals("no")) {
+//                checked="";
+//                out.println("Radio button 2 was selected.<BR>");
+//            }
+//        }
 
         daobook.getAllBooks();
         ArrayList<Books> allBooks = daobook.getAllBooks();

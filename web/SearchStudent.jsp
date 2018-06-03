@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: x
@@ -12,10 +13,11 @@
 </head>
 <body>
 <div id="login_form">
-    <form name="f1" action="StudentController" method="POST" id="f1">
+    <form name="f1" action="SearchStudent" method="POST" id="f1">
         <table>
             <tr>
-                <td class="f1_label">Курсов номер :</td><td><input type="text" name="facNum" value="" maxlength="10"/>
+                <td class="f1_label">Курсов номер :</td><td>
+                <input type="text" name="courseNumb" value="" maxlength="10"/>
             </td>
             </tr>
             <tr>
