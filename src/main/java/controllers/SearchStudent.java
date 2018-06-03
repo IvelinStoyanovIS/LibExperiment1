@@ -16,13 +16,13 @@ import java.io.IOException;
 public class SearchStudent extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String courseNumb=request.getParameter("courseNumb");
-        System.out.println(courseNumb);
-        //int courseNumb=0;
-        /*if(courseNumber !=null || courseNumber !="")
+        String courseNumber=request.getParameter("courseNumb");
+        //System.out.println(courseNumb);
+        int courseNumb=0;
+        if(courseNumber !=null || courseNumber !="")
         {
             courseNumb = Integer.parseInt(courseNumber);
-        }*/
+        }
         System.out.println(courseNumb);
         Student_dao daoStudent=new Student_dao();
         Student student1=new Student();

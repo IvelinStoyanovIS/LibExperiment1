@@ -1,6 +1,5 @@
 package dao;
 
-import entities.Books;
 import entities.Student;
 import util.ConnectionConfiguration;
 
@@ -40,7 +39,7 @@ public class Student_dao {
         try (PreparedStatement pstmt = conn.prepareStatement(SQL_CREATE_STUDENT, Statement.RETURN_GENERATED_KEYS)) {
             pstmt.setString(1, student.getName());
             pstmt.setInt(2, student.getReadBooks());
-            pstmt.setString(3, student.getCourseNumb());
+            pstmt.setInt(3, student.getCourseNumb());
             pstmt.setString(4,student.getEmail());
             pstmt.setString(5, student.getCurrntBook());
             pstmt.setString(6, student.getPathImage());
@@ -56,16 +55,16 @@ public class Student_dao {
     }
 
 
-    public Student getStudentByCourseNumb(String courseNumb) {
+    public Student getStudentByCourseNumb(int courseNumb) {
         Student student = new Student();
         try (PreparedStatement pstmt = conn.prepareStatement(SQL_GET_STUDENTS_BY_COURSE)) {
-            pstmt.setString(1, courseNumb);
+            pstmt.setInt(1, courseNumb);
             try (ResultSet rs = pstmt.executeQuery()) {
                 while (rs.next()) {
                     student.setId(rs.getInt(1));
                     student.setName(rs.getString(2));
                     student.setReadBooks(rs.getInt(3));
-                    student.setCourseNumb(rs.getString(4));
+                    student.setCourseNumb(rs.getInt(4));
                     student.setEmail(rs.getString(5));
                     student.setCurrntBook(rs.getString(6));
                     student.setPathImage(rs.getString(7));
@@ -88,7 +87,7 @@ public class Student_dao {
                 student.setId(rs.getInt(1));
                 student.setName(rs.getString(2));
                 student.setReadBooks(rs.getInt(3));
-                student.setCourseNumb(rs.getString(4));
+                student.setCourseNumb(rs.getInt(4));
                 student.setEmail(rs.getString(5));
                 student.setCurrntBook(rs.getString(6));
                 student.setPathImage(rs.getString(7));

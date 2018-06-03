@@ -52,7 +52,7 @@ public class StudentController extends HttpServlet {
 
         Student_dao daoStudent1 = new Student_dao();
         String studentName=request.getParameter("StudentName");
-        String studentCourseNumb=request.getParameter("StudentCourseNumb");
+        int studentCourseNumb=Integer.parseInt(request.getParameter("StudentCourseNumb"));
         String studentEmail=request.getParameter("StudentEmail");
 
         Student student1=new Student();

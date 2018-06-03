@@ -8,7 +8,7 @@ public class Student {
 
     private int id;
     private String name;
-    private String courseNumb;
+    private int courseNumb;
     private int readBooks;
     private String email;
     private String currentBook;
@@ -22,11 +22,11 @@ public class Student {
         this.name = name;
     }
 
-    public String getCourseNumb() {
+    public int getCourseNumb() {
         return courseNumb;
     }
 
-    public void setCourseNumb(String courseNumb) {
+    public void setCourseNumb(int courseNumb) {
         this.courseNumb = courseNumb;
     }
 
