@@ -31,6 +31,8 @@
     <br>
     <td><input type="submit" name="addstudent" value="Add Student" /></td>
     <br>
+    <td><input type="submit" name="showNRA" value="Show All !Return Books" /></td>
+    <br>
 
 <c:if test="${sessionScope.username == null}">
 <c:redirect url="index.jsp"/>
