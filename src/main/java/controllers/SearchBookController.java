@@ -1,6 +1,8 @@
 package controllers;
 
+import dao.Activity_dao;
 import dao.Books_dao;
+import entities.Activity;
 import entities.Books;
 
 import javax.servlet.RequestDispatcher;
@@ -12,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 /**
  * Created by Ivelin Stoyanov on 10.5.2018 г..
@@ -46,18 +49,18 @@ public class SearchBookController extends HttpServlet {
 //            out.println("----------------------");
 //            out.println("Image: " + book1.getBookImage());
 
-            request.setAttribute("bookid", book1.getId());
-            request.setAttribute("bookname", book1.getBookName());
-            request.setAttribute("bookauthor", book1.getBookAutor());
-            request.setAttribute("bookgenre", book1.getBookGenre());
-            request.setAttribute("bookpublisher", book1.getBookPublisher());
-            request.setAttribute("bookdescription", book1.getBookDescription());
-            request.setAttribute("bookdate", book1.getBookDate());
-            request.setAttribute("bookimage", book1.getBookImage());
-            request.setAttribute("path", book1.getPathImage());
-            //System.out.println(book1.getPathImage());
-            rd = request.getRequestDispatcher("ShowBook.jsp");
-            rd.forward(request, response);
+        request.setAttribute("bookid", book1.getId());
+        request.setAttribute("bookname", book1.getBookName());
+        request.setAttribute("bookauthor", book1.getBookAutor());
+        request.setAttribute("bookgenre", book1.getBookGenre());
+        request.setAttribute("bookpublisher", book1.getBookPublisher());
+        request.setAttribute("bookdescription", book1.getBookDescription());
+        request.setAttribute("bookdate", book1.getBookDate());
+        request.setAttribute("bookimage", book1.getBookImage());
+        request.setAttribute("path", book1.getPathImage());
+        //System.out.println(book1.getPathImage());
+        rd = request.getRequestDispatcher("ShowBook.jsp");
+        rd.forward(request, response);
 
     }
 

@@ -12,7 +12,7 @@ public class ConnectionConfiguration {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/uktcLib?useUnicode=true&characterEncoding=UTF-8", "root", "Kwadrat4e!");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/uktcLib", "root", "789456123");
         } catch (Exception e) {
             e.printStackTrace();
         }

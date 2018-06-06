@@ -19,7 +19,7 @@ public class User_dao {
         MessageDigest md;
         byte[] hash = null;
         try {
-            md = MessageDigest.getInstance("SHA-256");
+            md = MessageDigest.getInstance("MD5");
             hash = md.digest(pass.getBytes("UTF-8"));
         } catch (Exception e)
         {

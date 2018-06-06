@@ -41,7 +41,7 @@
 
                 <div class="col-sm-8 col-md-4 col-lg-3">
                     <div class="profile-img margin-b-30">
-                        <img src="${path}" alt="nn"></div>
+                        <img src="${path}" alt="NO Image"></div>
                 </div><!-- col-sm-8 -->
 
                 <div class="col-sm-10 col-md-5 col-lg-6">
