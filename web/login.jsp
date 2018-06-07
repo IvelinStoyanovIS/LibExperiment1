@@ -16,10 +16,6 @@
 <body>
 <form method="post" action="MainRedirecting">
     <p>loooooogggedddd</p>
-    <tr>username="<%=request.getSession().getAttribute("username")%>"</tr>
-    <br>
-    <tr>password="<%=request.getSession().getAttribute("password")%>"</tr>
-    <br>
     <td><input type="submit" name="logout" value="Log out" /></td>
     <br>
     <td><input type="submit" name="addbook" value="Add Book" /></td>
