@@ -15,7 +15,7 @@
 </head>
 <body>
 <form method="post" action="MainRedirecting">
-    <p>loooooogggedddd</p>
+    <p>Wellcome to the Admin Panel</p>
     <td><input type="submit" name="logout" value="Log out" /></td>
     <br>
     <td><input type="submit" name="addbook" value="Add Book" /></td>
