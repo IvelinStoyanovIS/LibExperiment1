@@ -76,23 +76,25 @@ public class BookController extends HttpServlet {
 //            }
 //        }
 
-        daobook.getAllBooks();
-        ArrayList<Books> allBooks = daobook.getAllBooks();
+//        daobook.getAllBooks();
+//        ArrayList<Books> allBooks = daobook.getAllBooks();
+//
+//
+//        for (int i = 0; i < allBooks.size(); i++) {
+//            out.println("Book " + i + ": ");
+//            out.print(allBooks.get(i).getBookBarcode());
+//            out.print(" | " + allBooks.get(i).getBookName());
+//            out.print(" | " + allBooks.get(i).getBookAutor());
+//            out.print(" | " + allBooks.get(i).getBookGenre());
+//            out.print(" | " + allBooks.get(i).getBookPublisher());
+//            out.print(" | " + allBooks.get(i).getBookDescription());
+//            out.print(" | " + allBooks.get(i).getBookDate());
+//            out.print(" | " + allBooks.get(i).getBookImage());
+//            out.println(" | " + allBooks.get(i).getPathImage());
+//            System.out.println(book1.getPathImage());
+//        }
 
-
-        for (int i = 0; i < allBooks.size(); i++) {
-            out.println("Book " + i + ": ");
-            out.print(allBooks.get(i).getBookBarcode());
-            out.print(" | " + allBooks.get(i).getBookName());
-            out.print(" | " + allBooks.get(i).getBookAutor());
-            out.print(" | " + allBooks.get(i).getBookGenre());
-            out.print(" | " + allBooks.get(i).getBookPublisher());
-            out.print(" | " + allBooks.get(i).getBookDescription());
-            out.print(" | " + allBooks.get(i).getBookDate());
-            out.print(" | " + allBooks.get(i).getBookImage());
-            out.println(" | " + allBooks.get(i).getPathImage());
-            System.out.println(book1.getPathImage());
-        }
+        response.sendRedirect("login.jsp");
 
     }
 

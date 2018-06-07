@@ -12,7 +12,8 @@ import java.io.IOException;
 @WebServlet(name = "MainRedirecting", value="/MainRedirecting")
 public class MainRedirecting extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        response.setCharacterEncoding("UTF-8");
+        request.setCharacterEncoding("UTF-8");
         String logoutcontroller="/LogoutController";
         String addingbookcontroller="addBook.jsp";
         String serchingbookcontroller="SearchBook.jsp";

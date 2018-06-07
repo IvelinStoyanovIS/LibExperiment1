@@ -6,7 +6,7 @@
   Time: 1:44
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="bg">
 <head>
@@ -15,6 +15,7 @@
 
     <title>Students</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
 
@@ -55,8 +56,13 @@
                 </div><!-- col-sm-8 -->
 
                 <div class="col-sm-10 col-md-3 col-lg-3">
-                    <a class="downlad-btn" href="#">Вземи или Върни книга</a>
+                    <a class="downlad-btn" href="GetTakeBook.jsp">Вземи/Върни книга</a>
                 </div><!-- col-lg-2 -->
+
+            </div>
+            </div>
+        </div>
+    </div>
 
             </div><!-- row -->
 

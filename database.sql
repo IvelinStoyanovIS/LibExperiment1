@@ -1,7 +1,8 @@
-CREATE DATABASE uktcLib;
+CREATE DATABASE uktcLib CHARACTER SET utf8
+  COLLATE utf8_general_ci;
 USE uktcLib;
 
-
+drop database uktcLib;
 
 CREATE TABLE IF NOT EXISTS uktcLib.person (
 	person_id int primary key unique auto_increment,
@@ -60,7 +61,7 @@ CREATE TABLE students (
 	id int primary key not null auto_increment,
 	name VARCHAR(100) NOT NULL,
     readBooks int,
-    courseNumb VARCHAR(10) unique not null,
+    courseNumb int unique not null,
     email VARCHAR(100) NOT NULL,
     currentBook VARCHAR(100),
     file varchar(255) NOT NULL
@@ -75,4 +76,11 @@ SELECT * FROM students WHERE courseNumb=14116;
 
 
 SELECT * FROM students;
+
+SET NAMES 'utf8';
+SET CHARACTER SET utf8;
+
+SELECT default_character_set_name FROM information_schema.SCHEMATA
+WHERE schema_name = "uktcLib";
+
 

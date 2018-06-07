@@ -17,7 +17,8 @@ import java.io.PrintWriter;
 public class LoginController1 extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        response.setCharacterEncoding("UTF-8");
+        request.setCharacterEncoding("UTF-8");
 
         User_dao dao = new User_dao();
         String username = request.getParameter("userName");
@@ -33,6 +34,7 @@ public class LoginController1 extends HttpServlet {
 
         if (request.getParameter("submit") != null) {
 
+            //dao.insert(user1);
             personSelect = dao.selectByUName(user1);
             if (personSelect) {
                 response.sendRedirect(loginURL);

@@ -19,6 +19,8 @@ import java.io.PrintWriter;
 @WebServlet( name = "SearchBookController", value="/SearchBookController" )
 public class SearchBookController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setCharacterEncoding("UTF-8");
+        request.setCharacterEncoding("UTF-8");
         String Barcode = request.getParameter("barcode");
         PrintWriter out = response.getWriter();
         Books_dao daobook=new Books_dao();

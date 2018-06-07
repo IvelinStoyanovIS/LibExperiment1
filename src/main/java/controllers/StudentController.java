@@ -68,21 +68,22 @@ public class StudentController extends HttpServlet {
         daoStudent1.createStudent(student1);
 
 
-        daoStudent1.getAllStudents();
-        ArrayList<Student> allStudents = daoStudent1.getAllStudents();
+//        daoStudent1.getAllStudents();
+//        ArrayList<Student> allStudents = daoStudent1.getAllStudents();
+//
+//
+//        for (int i = 0; i < allStudents.size(); i++) {
+//            out.println("Students " + i + ": ");
+//            out.print(allStudents.get(i).getId());
+//            out.print(" | " + allStudents.get(i).getName());
+//            out.print(" | " + allStudents.get(i).getReadBooks());
+//            out.print(" | " + allStudents.get(i).getCourseNumb());
+//            out.print(" | " + allStudents.get(i).getEmail());
+//            out.print(" | " + allStudents.get(i).getCurrntBook());
+//            out.println(" | " + allStudents.get(i).getPathImage());
+//        }
 
-
-        for (int i = 0; i < allStudents.size(); i++) {
-            out.println("Students " + i + ": ");
-            out.print(allStudents.get(i).getId());
-            out.print(" | " + allStudents.get(i).getName());
-            out.print(" | " + allStudents.get(i).getReadBooks());
-            out.print(" | " + allStudents.get(i).getCourseNumb());
-            out.print(" | " + allStudents.get(i).getEmail());
-            out.print(" | " + allStudents.get(i).getCurrntBook());
-            out.println(" | " + allStudents.get(i).getPathImage());
-        }
-
+        response.sendRedirect("login.jsp");
 
     }
 
