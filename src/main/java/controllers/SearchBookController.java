@@ -49,18 +49,24 @@ public class SearchBookController extends HttpServlet {
 //            out.println("----------------------");
 //            out.println("Image: " + book1.getBookImage());
 
-        request.setAttribute("bookid", book1.getId());
-        request.setAttribute("bookname", book1.getBookName());
-        request.setAttribute("bookauthor", book1.getBookAutor());
-        request.setAttribute("bookgenre", book1.getBookGenre());
-        request.setAttribute("bookpublisher", book1.getBookPublisher());
-        request.setAttribute("bookdescription", book1.getBookDescription());
-        request.setAttribute("bookdate", book1.getBookDate());
-        request.setAttribute("bookimage", book1.getBookImage());
-        request.setAttribute("path", book1.getPathImage());
-        //System.out.println(book1.getPathImage());
-        rd = request.getRequestDispatcher("ShowBook.jsp");
-        rd.forward(request, response);
+        if(book1.getBookBarcode()!=null) {
+            request.setAttribute("bookid", book1.getId());
+            request.setAttribute("bookname", book1.getBookName());
+            request.setAttribute("bookauthor", book1.getBookAutor());
+            request.setAttribute("bookgenre", book1.getBookGenre());
+            request.setAttribute("bookpublisher", book1.getBookPublisher());
+            request.setAttribute("bookdescription", book1.getBookDescription());
+            request.setAttribute("bookdate", book1.getBookDate());
+            request.setAttribute("bookimage", book1.getBookImage());
+            request.setAttribute("path", book1.getPathImage());
+            //System.out.println(book1.getPathImage());
+            rd = request.getRequestDispatcher("ShowBook.jsp");
+            rd.forward(request, response);
+        }
+        else
+        {
+            response.sendRedirect("WrongBarcode.jsp");
+        }
 
     }
 

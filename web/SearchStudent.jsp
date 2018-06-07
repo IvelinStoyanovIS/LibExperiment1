@@ -18,7 +18,7 @@
         <table>
             <tr>
                 <td class="f1_label">Курсов номер :</td><td>
-                <input type="text" name="courseNumb" value="" maxlength="10"/>
+                <input type="text" name="courseNumb" value="" maxlength="5"/>
             </td>
             </tr>
             <tr>

@@ -29,18 +29,27 @@ public class SearchStudent extends HttpServlet {
         Student student1=new Student();
         student1 = daoStudent.getStudentByCourseNumb(courseNumb);
         RequestDispatcher rd;
+        RequestDispatcher rd1;
 
 
+        if(student1.getCourseNumb()!=0) {
+            request.setAttribute("studentid", student1.getId());
+            request.setAttribute("studentname", student1.getName());
+            request.setAttribute("coursenumb", student1.getCourseNumb());
+            request.setAttribute("email", student1.getEmail());
+            request.setAttribute("currentbook", student1.getCurrntBook());
+            request.setAttribute("readbooks", student1.getReadBooks());
+            request.setAttribute("path", student1.getPathImage());
+            rd = request.getRequestDispatcher("StudentPage.jsp");
+            rd.forward(request, response);
+            rd1 = request.getRequestDispatcher("TakeGetController");
+            rd1.forward(request, response);
+        }
+        else
+        {
 
-        request.setAttribute("studentid", student1.getId());
-        request.setAttribute("studentname", student1.getName());
-        request.setAttribute("coursenumb", student1.getCourseNumb());
-        request.setAttribute("email", student1.getEmail());
-        request.setAttribute("currentbook", student1.getCurrntBook());
-        request.setAttribute("readbooks", student1.getReadBooks());
-        request.setAttribute("path", student1.getPathImage());
-        rd = request.getRequestDispatcher("StudentPage.jsp");
-        rd.forward(request, response);
+            response.sendRedirect("WrongCourseNumber.jsp");
+        }
 
     }
 

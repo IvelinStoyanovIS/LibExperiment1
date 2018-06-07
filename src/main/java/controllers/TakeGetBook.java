@@ -36,15 +36,13 @@ public class TakeGetBook extends HttpServlet {
         String barcode=request.getParameter("barcode");
         String returnDate=request.getParameter("date");
         int studentNumber=Integer.parseInt(request.getParameter("student_number"));
+        //int studentNumber=Integer.parseInt(request.getParameter("studentid"));
 
         book1 = book_dao.getBookByBarcode(barcode);
 
 
-        //request.setAttribute("studentid", student1.getId());
-
         student1 = stud_dao.getStudentByCourseNumb(studentNumber);
 
-        //request.setAttribute("bookid", book1.getId());
 
         activity.setBook_id(book1.getId());
         activity.setStudent_id(student1.getId());
@@ -52,6 +50,8 @@ public class TakeGetBook extends HttpServlet {
         activity.setIs_return(false);
 
         act_dao.createActivity(activity);
+
+
 
         PrintWriter out = response.getWriter();
         out.println(barcode);
