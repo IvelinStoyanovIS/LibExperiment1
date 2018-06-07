@@ -16,7 +16,6 @@
 <table>
     <tr>
         <td class="f1_label">Баркод :</td><td><input type="text" name="barcode" value="" maxlength="10"/>
-        <td class="f1_label">Номер на ученик :</td><td><input type="text" name="student_number" value=""/>
         <td class="f2_label">Дата на връщане :</td><td><input type="date" name="date" value="" />
     </td>
     </tr>

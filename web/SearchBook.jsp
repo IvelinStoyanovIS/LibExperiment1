@@ -22,6 +22,7 @@
                    oninput="maxLengthCheck(this)"
                    type = "number"
                    maxlength ="10"
+                   minlength="10"
                    min = "1"/>
             <script>
                 function maxLengthCheck(object){

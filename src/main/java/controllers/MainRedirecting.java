@@ -46,9 +46,6 @@ public class MainRedirecting extends HttpServlet {
             if (request.getParameter("showNRA") != null) {
                 response.sendRedirect(NRA);
             }
-            if (request.getParameter("takebooks") != null) {
-                response.sendRedirect(GetTakeBook);
-            }
         }
         else
         {

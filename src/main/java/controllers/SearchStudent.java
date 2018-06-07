@@ -17,6 +17,9 @@ public class SearchStudent extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setCharacterEncoding("UTF-8");
         request.setCharacterEncoding("UTF-8");
+        HttpSession ses = request.getSession(true);
+
+
         String courseNumber=request.getParameter("courseNumb");
         //System.out.println(courseNumb);
         int courseNumb=0;
@@ -40,10 +43,10 @@ public class SearchStudent extends HttpServlet {
             request.setAttribute("currentbook", student1.getCurrntBook());
             request.setAttribute("readbooks", student1.getReadBooks());
             request.setAttribute("path", student1.getPathImage());
+            //ses.putValue("key",student1.getId());
+            ses.setAttribute("studid", student1.getId());
             rd = request.getRequestDispatcher("StudentPage.jsp");
             rd.forward(request, response);
-            rd1 = request.getRequestDispatcher("TakeGetController");
-            rd1.forward(request, response);
         }
         else
         {
