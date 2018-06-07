@@ -83,4 +83,37 @@ SET CHARACTER SET utf8;
 SELECT default_character_set_name FROM information_schema.SCHEMATA
 WHERE schema_name = "uktcLib";
 
+CREATE TABLE book_activity(
+ activity_id int primary key not null auto_increment,
+ student_id int not null,
+ CONSTRAINT FOREIGN KEY (student_id) REFERENCES students(id),
+ book_id int not null,
+ CONSTRAINT FOREIGN KEY (book_id) REFERENCES books(id),
+ return_date DATE not null,
+ is_return BOOLEAN not null,
+ UNIQUE(student_id,book_id, return_date)
+); 
+
+DROP TABLE book_activity;
+
+SELECT * FROM students;
+
+INSERT INTO book_activity(student_id, book_id, return_date, is_return) VALUES 
+	(6,1, CURDATE(), false),
+    (5,2 , CURDATE(), false),
+    (6,2 , CURDATE(), TRUE);
+
+
+SELECT books.BookName, students.name, book_activity.return_date
+FROM books JOIN students
+ON books.id IN(
+SELECT book_id FROM book_activity WHERE book_activity.student_id = students.id);
+
+SELECT book_activity.activity_id, books.BookName, students.name, book_activity.return_date, book_activity.is_return
+FROM books JOIN book_activity
+ON books.id = book_activity.book_id and is_return = FALSE
+JOIN students ON students.id = book_activity.student_id;
+
+SELECT * FROM book_activity WHERE activity_id=1
+
 
