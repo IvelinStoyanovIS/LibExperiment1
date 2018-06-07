@@ -24,7 +24,7 @@ public class SearchStudent extends HttpServlet {
         {
             courseNumb = Integer.parseInt(courseNumber);
         }
-        System.out.println(courseNumb);
+        //System.out.println(courseNumb);
         Student_dao daoStudent=new Student_dao();
         Student student1=new Student();
         student1 = daoStudent.getStudentByCourseNumb(courseNumb);

@@ -32,6 +32,8 @@
     <br>
     <td><input type="submit" name="showNRA" value="Show All !Return Books" /></td>
     <br>
+    <td><input type="submit" name="takebooks" value="Вземи/Върни книга" /></td>
+    <br>
 
 <c:if test="${sessionScope.username == null}">
 <c:redirect url="index.jsp"/>

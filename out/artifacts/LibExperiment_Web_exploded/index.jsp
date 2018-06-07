@@ -42,9 +42,6 @@
                 <td><input type="submit" name="submit" value="Login" /></td>
                 <td><input type="reset" name="reset" value="Reset" /></td>
             </tr>
-            <tr>
-                <td colspan="2">New User <a href="register.jsp">Register Here</a></td>
-            </tr>
             </tbody>
         </table>
 

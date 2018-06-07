@@ -21,6 +21,7 @@ public class MainRedirecting extends HttpServlet {
         String addstudent = "addStudent.jsp";
         String indexURL = "index.jsp";
         String NRA = "NRA.jsp";
+        String GetTakeBook = "GetTakeBook.jsp";
         RequestDispatcher rd;
         HttpSession ses = request.getSession();
 
@@ -44,6 +45,9 @@ public class MainRedirecting extends HttpServlet {
             }
             if (request.getParameter("showNRA") != null) {
                 response.sendRedirect(NRA);
+            }
+            if (request.getParameter("takebooks") != null) {
+                response.sendRedirect(GetTakeBook);
             }
         }
         else
