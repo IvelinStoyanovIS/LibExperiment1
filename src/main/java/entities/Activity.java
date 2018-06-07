@@ -50,4 +50,23 @@ public class Activity {
     private String return_date;
     private boolean is_return;
 
+    public int getStudent_id() {
+        return student_id;
+    }
+
+    public void setStudent_id(int student_id) {
+        this.student_id = student_id;
+    }
+
+    public int getBook_id() {
+        return book_id;
+    }
+
+    public void setBook_id(int book_id) {
+        this.book_id = book_id;
+    }
+
+    private int student_id;
+    private int book_id;
+
 }

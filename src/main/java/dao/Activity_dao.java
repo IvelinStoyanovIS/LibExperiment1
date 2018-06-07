@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 
 public class Activity_dao {
     private final Connection conn = ConnectionConfiguration.getConnection();
-    private final String SQL_CREATE_ACTIVITY = "INSERT INTO book_activity(student_id, book_id, return_date, is_return) VALUES (?, ?, ?, ?";
+    private final String SQL_CREATE_ACTIVITY = "INSERT INTO book_activity(student_id, book_id, return_date, is_return) VALUES (?, ?, ?, ?)";
     private final String SQL_GET_ACTIVITY_BY_ID = "SELECT * FROM book_activity WHERE activity_id=?";
     private final String SQL_GET_ALL_NONRETURN_BOOKS = "SELECT book_activity.activity_id, books.BookName, students.name, book_activity.return_date, book_activity.is_return FROM books JOIN book_activity ON books.id = book_activity.book_id and is_return = FALSE JOIN students ON students.id = book_activity.student_id;";
     private final String SQL_GET_WARNING_ACTIVITY = "SELECT * FROM book_activity";
@@ -22,8 +22,8 @@ public class Activity_dao {
 
     public void createActivity(Activity activity) {
         try (PreparedStatement pstmt = conn.prepareStatement(SQL_CREATE_ACTIVITY, Statement.RETURN_GENERATED_KEYS)) {
-            pstmt.setString(1, activity.getStudent_name());
-            pstmt.setString(2, activity.getBook_name());
+            pstmt.setInt(1, activity.getStudent_id());
+            pstmt.setInt(2, activity.getBook_id());
             pstmt.setString(3, activity.getReturn_date());
             pstmt.setBoolean(4, activity.isIs_return());
             pstmt.executeUpdate();

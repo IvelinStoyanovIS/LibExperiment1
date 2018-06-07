@@ -7,23 +7,30 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
-    <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Show Book Page</title>
+    <link href="css/ShowBook.css" rel="stylesheet">
 </head>
 <body>
-<h3> Book id is ${bookid}</h3>
-<h3> Book name is ${bookname}</h3>
-<h3> Book author is ${bookauthor}</h3>
-<h3> Book genre is ${bookgenre}</h3>
-<h3> Book publisher is ${bookpublisher}</h3>
-<h3> Book description: ${bookdescription}</h3>
-<h3> Book date is ${bookdate}</h3>
-<h3> Book image: ${bookimage}</h3>
-
-<img src="${path}">
-
+<div class="divOutside">
+    <div class="divInside">
+        <br>
+        <h3> Book id is ${bookid}</h3>
+        <h3> Book name is ${bookname}</h3>
+        <h3> Book author is ${bookauthor}</h3>
+        <h3> Book genre is ${bookgenre}</h3>
+        <h3> Book publisher is ${bookpublisher}</h3>
+        <h3> Book description: ${bookdescription}</h3>
+        <h3> Book date is ${bookdate}</h3>
+        <h3> Book image: ${bookimage}</h3>
+        <h3> Book path image: ${path}</h3>
+    </div>
+    <div class="pic">
+        <img src="${path}" alt="noPic" width="100" height="100">
+    </div>
+</div>
 
 <c:if test="${sessionScope.username == null}">
     <c:redirect url="index.jsp"/>

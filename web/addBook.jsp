@@ -54,8 +54,6 @@
                 if (object.value.length > object.maxLength)
                     object.value = object.value.slice(0, object.maxLength)
             }
-
-
         </script><br><br>
 
         <input type="submit" value="Потвърди"><br><br>

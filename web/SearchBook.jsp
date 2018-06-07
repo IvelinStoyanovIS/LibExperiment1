@@ -7,25 +7,30 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
-<html>
+<!DOCTYPE html>
+<html lang="bg">
 <head>
-    <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Title</title>
+    <title>SearchBook</title>
+    <link href="css/SearchBook.css" rel="stylesheet">
 </head>
 <body>
 <div id="login_form">
-    <form name="f1" action="SearchBookController" method="POST" id="f1">
-        <table>
-            <tr>
-                <td class="f1_label">Баркод :</td><td><input type="text" name="barcode" value="" maxlength="10"/>
-            </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="submit" name="login" value="Потвърди" style="font-size:18px; " />
-                </td>
-            </tr>
-        </table>
+    <form name="f1" action="SearchBookController" method="POST" id="f1"><br>
+        <div class="table">
+            <label class="f1_label">Баркод :</label><br>
+            <input name="barcode"
+                   oninput="maxLengthCheck(this)"
+                   type = "number"
+                   maxlength ="10"
+                   min = "1"/>
+            <script>
+                function maxLengthCheck(object){
+                    if (object.value.length > object.maxLength)
+                        object.value = object.value.slice(0, object.maxLength)
+                }
+            </script>
+            <input type="submit" name="login" value="Потвърди" style="font-size:18px; " />
+        </div>
         <c:if test="${sessionScope.username == null}">
             <c:redirect url="index.jsp"/>
         </c:if>
