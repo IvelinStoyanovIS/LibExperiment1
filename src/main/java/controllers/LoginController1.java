@@ -41,6 +41,7 @@ public class LoginController1 extends HttpServlet {
                 session.setAttribute("firstname", user1.getUserName());
                 request.getSession().setAttribute("username", user1.getUserName());
                 request.getSession().setAttribute("password", user1.getPassword());
+                //  roleee  request.getSession().setAttribute("role", user1.);
             } else {
                 response.sendRedirect(wrongLoginURL);
                 request.getSession().setAttribute("wrong_login", "Wrong username or password");

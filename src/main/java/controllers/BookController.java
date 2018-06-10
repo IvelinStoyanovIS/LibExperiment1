@@ -8,10 +8,11 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.logging.Level;
+
+import static com.sun.xml.internal.ws.spi.db.BindingContextFactory.LOGGER;
 
 /**
  * Created by Ivelin Stoyanov on 9.5.2018 г..
@@ -26,13 +27,13 @@ public class BookController extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 
 
-        String savePath = "images";
+        String savePath = "images_books";
         File fileSaveDir=new File(savePath);
         if(!fileSaveDir.exists()){
             fileSaveDir.mkdir();
         }
 
-
+        PrintWriter out = response.getWriter();
         Books_dao daobook=new Books_dao();
         String BookBarcode = request.getParameter("BookBarcode");
         String BookName = request.getParameter("BookName");
@@ -42,7 +43,7 @@ public class BookController extends HttpServlet {
         String BookDescription = request.getParameter("BookDescription");
         String BookDate = request.getParameter("BookDate");
         String BookImage = request.getParameter("BookImage");
-        PrintWriter out = response.getWriter();
+
         Books book1 = new Books();
         book1.setBookBarcode(BookBarcode);
         book1.setBookName(BookName);
@@ -55,46 +56,57 @@ public class BookController extends HttpServlet {
         String addBookURL = "addBook.jsp";
         String showBookURL = "ShowBook.jsp";
 
+
+        OutputStream out_stream = null;
+        InputStream filecontent = null;
+        final String path = "/home/biba/IdeaProjects/lib2/LibExperiment1/web/images_books/";
+
         Part part=request.getPart("file");
         String fileName=daobook.extractFileName(part);
-        String filePath= savePath + File.separator + fileName ;
-        book1.setPathImage(filePath);
 
-        daobook.createBook(book1);
 
-//        if(request.getParameter("yesno") != null)
-//        {
-//            String checked=null;
-//            if(request.getParameter("yesno").equals("yes")) {
-//                checked="checked"
-//                out.println("Radio button 1 was selected.<BR>");
-//               // modelMap.put("checkBoxChecked",checked);
-//            }
-//            if(request.getParameter("radios").equals("no")) {
-//                checked="";
-//                out.println("Radio button 2 was selected.<BR>");
-//            }
-//        }
+        try {
+            out_stream = new FileOutputStream(new File(path + File.separator
+                    + fileName));
+            filecontent = part.getInputStream();
 
-//        daobook.getAllBooks();
-//        ArrayList<Books> allBooks = daobook.getAllBooks();
-//
-//
-//        for (int i = 0; i < allBooks.size(); i++) {
-//            out.println("Book " + i + ": ");
-//            out.print(allBooks.get(i).getBookBarcode());
-//            out.print(" | " + allBooks.get(i).getBookName());
-//            out.print(" | " + allBooks.get(i).getBookAutor());
-//            out.print(" | " + allBooks.get(i).getBookGenre());
-//            out.print(" | " + allBooks.get(i).getBookPublisher());
-//            out.print(" | " + allBooks.get(i).getBookDescription());
-//            out.print(" | " + allBooks.get(i).getBookDate());
-//            out.print(" | " + allBooks.get(i).getBookImage());
-//            out.println(" | " + allBooks.get(i).getPathImage());
-//            System.out.println(book1.getPathImage());
-//        }
+            int read = 0;
+            final byte[] bytes = new byte[1024];
 
-        response.sendRedirect("login.jsp");
+            while ((read = filecontent.read(bytes)) != -1) {
+                out_stream.write(bytes, 0, read);
+            }
+            //out.println("New file " + fileName + " created at " + path);
+
+            String filePath= savePath + File.separator + fileName ;
+            book1.setPathImage(filePath);
+
+            daobook.createBook(book1);
+
+            response.sendRedirect("login.jsp");
+
+            LOGGER.log(Level.INFO, "File{0}being uploaded to {1}",
+                    new Object[]{fileName, path});
+        } catch (FileNotFoundException fne) {
+//            out.println("You either did not specify a file to upload or are "
+//                    + "trying to upload a file to a protected or nonexistent "
+//                    + "location.");
+//            out.println("<br/> ERROR: " + fne.getMessage());
+            response.sendRedirect("Error_specify_img_file.jsp");
+            LOGGER.log(Level.SEVERE, "Problems during file upload. Error: {0}",
+                    new Object[]{fne.getMessage()});
+        } finally {
+            if (out != null) {
+                out.close();
+            }
+            if (filecontent != null) {
+                filecontent.close();
+            }
+            if (out != null) {
+                out.close();
+            }
+        }
+
 
     }
 

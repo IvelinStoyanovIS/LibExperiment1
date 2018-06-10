@@ -30,7 +30,6 @@ public class TakeGetBook extends HttpServlet {
         Student_dao stud_dao=new Student_dao();
         Books_dao book_dao=new Books_dao();
 
-        Student student1=new Student();
         Books book1=new Books();
 
         Activity activity = new Activity();
@@ -40,19 +39,12 @@ public class TakeGetBook extends HttpServlet {
 
         String barcode=request.getParameter("barcode");
         String returnDate=request.getParameter("date");
-        //int studentNumber=Integer.parseInt(request.getParameter("student_number"));
-        //int studentNumber=Integer.parseInt(request.getParameter("studentid"));
-
         int studentNumber = (int) ses.getAttribute("studid");
 
         book1 = book_dao.getBookByBarcode(barcode);
 
 
-        student1 = stud_dao.getStudentByCourseNumb(studentNumber);
-
-
         activity.setBook_id(book1.getId());
-        //activity.setStudent_id(student1.getId());
         activity.setStudent_id(studentNumber);
         activity.setReturn_date(returnDate);
         activity.setIs_return(false);

@@ -11,10 +11,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.logging.Level;
+
+import static com.sun.xml.internal.ws.spi.db.BindingContextFactory.LOGGER;
+import static java.lang.System.out;
 
 /**
  * Created by Ivelin Stoyanov on 14.5.2018 г..
@@ -27,23 +29,7 @@ public class StudentController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-//        Student student1 = new Student();
-//        student1.setName("Ивелин Стоянов");
-//        student1.setFacNum("14116");
-//        student1.setEmail("ivelin_stoyanov@abv.bg");
-//        student1.setNumberReadBooks(115);
-//        student1.setTakenBook(true);
-//
-//        request.setAttribute("name", student1.getName());
-//        request.setAttribute("facNum", student1.getFacNum());
-//        request.setAttribute("email", student1.getEmail());
-//        request.setAttribute("NumberReadBooks", student1.getNumberReadBooks());
-//        request.setAttribute("TakenBook", student1.isTakenBook());
-//
-//        request.getRequestDispatcher("StudentPage.jsp").forward(request, response);
-//        response.sendRedirect("StudentPage.jsp");
 
-        PrintWriter out = response.getWriter();
         String savePath = "images";
         File fileSaveDir=new File(savePath);
         if(!fileSaveDir.exists()){
@@ -60,30 +46,45 @@ public class StudentController extends HttpServlet {
         student1.setCourseNumb(studentCourseNumb);
         student1.setEmail(studentEmail);
 
+        OutputStream out_stream = null;
+        //final String path = request.getParameter("destination");
+        final String path = "/home/biba/IdeaProjects/lib2/LibExperiment1/web/images/";
+
         Part part=request.getPart("file");
         String fileName=daoStudent1.extractFileName(part);
-        String filePath= savePath + File.separator + fileName ;
-        student1.setPathImage(filePath);
 
-        daoStudent1.createStudent(student1);
+//        String filePath= savePath + File.separator + fileName ;
+//        student1.setPathImage(filePath);
 
 
-//        daoStudent1.getAllStudents();
-//        ArrayList<Student> allStudents = daoStudent1.getAllStudents();
-//
-//
-//        for (int i = 0; i < allStudents.size(); i++) {
-//            out.println("Students " + i + ": ");
-//            out.print(allStudents.get(i).getId());
-//            out.print(" | " + allStudents.get(i).getName());
-//            out.print(" | " + allStudents.get(i).getReadBooks());
-//            out.print(" | " + allStudents.get(i).getCourseNumb());
-//            out.print(" | " + allStudents.get(i).getEmail());
-//            out.print(" | " + allStudents.get(i).getCurrntBook());
-//            out.println(" | " + allStudents.get(i).getPathImage());
-//        }
+        out_stream = new FileOutputStream(new File(path + File.separator
+                + fileName));
+        try (PrintWriter out = response.getWriter(); InputStream filecontent = part.getInputStream()) {
 
-        response.sendRedirect("login.jsp");
+            int read = 0;
+            final byte[] bytes = new byte[1024];
+
+            while ((read = filecontent.read(bytes)) != -1) {
+                out_stream.write(bytes, 0, read);
+            }
+            //out.println("New file " + fileName + " created at " + path);
+            String filePath= savePath + File.separator + fileName ;
+            student1.setPathImage(filePath);
+
+            daoStudent1.createStudent(student1);
+            response.sendRedirect("login.jsp");
+            LOGGER.log(Level.INFO, "File{0}being uploaded to {1}",
+                    new Object[]{fileName, path});
+        } catch (FileNotFoundException fne) {
+//            out.println("You either did not specify a file to upload or are "
+//                    + "trying to upload a file to a protected or nonexistent "
+//                    + "location.");
+//            out.println("<br/> ERROR: " + fne.getMessage());
+            response.sendRedirect("Error_specify_img_file.jsp");
+            LOGGER.log(Level.SEVERE, "Problems during file upload. Error: {0}",
+                    new Object[]{fne.getMessage()});
+        }
+
 
     }
 

@@ -17,7 +17,7 @@
     <label for="StudentName" class="redstar"> ****Имена на ученик:</label><br>
     <input type="text" name="StudentName" maxlength="255" required="required"> <br>
     <label for="StudentCourseNumb" class="redstar" > ****Курсов номер:</label><br>
-    <input type="number" name="StudentCourseNumb" maxlength="255" required="required"> <br>
+    <input type="text" name="StudentCourseNumb" maxlength="5" required="required"> <br>
     <label for="StudentEmail" class="redstar">****E-mail:</label><br>
     <input type="text" name="StudentEmail"  maxlength="255" required="required"><br>
     <%--<label for="StudentReadBooks">прочетени книги:</label><br>
@@ -25,6 +25,7 @@
     <label for="StudentCurrentBook">Текуща книга:</label><br>
     <input type="text" name="StudentCurrentBook" maxlength="255"><br>--%>
     <input type="file" name="file" id="ImageFile"/><br>
+
 
     <br> <input type="submit" value="Потвърди">
 
