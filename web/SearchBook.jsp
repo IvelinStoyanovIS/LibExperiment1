@@ -32,7 +32,9 @@
             </script>
             <input type="submit" name="login" value="Потвърди" style="font-size:18px; " />
         </div>
-        <c:if test="${sessionScope.username == null}">
+
+
+        <c:if test="${sessionScope.role !=1 && sessionScope.role !=3}">
             <c:redirect url="index.jsp"/>
         </c:if>
     </form>

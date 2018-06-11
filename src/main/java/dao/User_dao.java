@@ -158,7 +158,7 @@ public class User_dao {
     }
 
 
-    public boolean selectByUName(User person) {
+    public String selectByUName(User person) {
         User person1 = new User();
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -167,7 +167,7 @@ public class User_dao {
 
         try {
             connection = ConnectionConfiguration.getConnection();
-            preparedStatement = connection.prepareStatement("SELECT person_id, user_name, password, hash_pass FROM person WHERE user_name = ?");
+            preparedStatement = connection.prepareStatement("SELECT person_id, user_name, password, hash_pass, role_id FROM person WHERE user_name = ?");
             preparedStatement.setString(1, person.getUserName());
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -175,19 +175,27 @@ public class User_dao {
                 person1.setUserName(resultSet.getString("user_name"));
                 person1.setPassword(resultSet.getString("password"));
                 person1.setHashedPassword(resultSet.getString("hash_pass"));
+                person1.setRole_id(resultSet.getInt("role_id"));
 
             }
 
-            if(person.getHashedPassword().equals(person1.getHashedPassword()))
+            if(person.getHashedPassword().equals(person1.getHashedPassword()) && person1.getRole_id()==1)
             {
-                return true;
+                person.setRole_id(person1.getRole_id());
+                return "Admin_role";
             }
-            return false;
+            if(person.getHashedPassword().equals(person1.getHashedPassword()) && person1.getRole_id()==3)
+            {
+                person.setRole_id(person1.getRole_id());
+                return "librarian";
+            }
+            //return false;
+            return "user";
 
 
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
+            //return false;
         } finally {
             if (resultSet != null) {
                 try {
@@ -215,6 +223,7 @@ public class User_dao {
 
             }
         }
+        return "not_user";
 
     }
 

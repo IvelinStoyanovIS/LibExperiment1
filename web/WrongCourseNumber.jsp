@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: biba
@@ -12,5 +13,11 @@
 </head>
 <body>
 <p>WRONG COURSE NUMBER</p>
+
+
+<c:if test="${sessionScope.role !=1 && sessionScope.role !=3}">
+    <c:redirect url="index.jsp"/>
+</c:if>
+
 </body>
 </html>

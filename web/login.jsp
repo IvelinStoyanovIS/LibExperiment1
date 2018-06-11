@@ -28,12 +28,15 @@
     <br>
     <td><input type="submit" name="showNRA" value="Show All !Return Books" /></td>
     <br>
-<c:if test="${sessionScope.username == null}">
-<c:redirect url="index.jsp"/>
-</c:if>
+
 
 
 
 </form>
+
+
+<c:if test="${ sessionScope.role !=1}">
+    <c:redirect url="index.jsp"/>
+</c:if>
 </body>
 </html>

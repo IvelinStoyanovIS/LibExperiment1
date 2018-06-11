@@ -80,7 +80,6 @@ public class StudentController extends HttpServlet {
 //                    + "trying to upload a file to a protected or nonexistent "
 //                    + "location.");
 //            out.println("<br/> ERROR: " + fne.getMessage());
-            response.sendRedirect("Error_specify_img_file.jsp");
             LOGGER.log(Level.SEVERE, "Problems during file upload. Error: {0}",
                     new Object[]{fne.getMessage()});
         }

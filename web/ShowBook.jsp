@@ -32,7 +32,7 @@
     </div>
 </div>
 
-<c:if test="${sessionScope.username == null}">
+<c:if test="${sessionScope.role !=1 && sessionScope.role !=3}">
     <c:redirect url="index.jsp"/>
 </c:if>
 

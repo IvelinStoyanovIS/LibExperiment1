@@ -29,20 +29,34 @@ public class LoginController1 extends HttpServlet {
         String loginURL = "login.jsp";
         String wrongLoginURL = "wrongLogin.jsp";
         HttpSession session = request.getSession();
-        boolean personSelect;
+        //boolean personSelect;
+        String personSelect;
 
+//        if(session.getAttribute("username")==null)
+//        {
+//            response.sendRedirect("index.jsp");
+//        }
 
         if (request.getParameter("submit") != null) {
 
             //dao.insert(user1);
             personSelect = dao.selectByUName(user1);
-            if (personSelect) {
-                response.sendRedirect(loginURL);
+            if (personSelect=="Admin_role") {
+
                 session.setAttribute("firstname", user1.getUserName());
                 request.getSession().setAttribute("username", user1.getUserName());
                 request.getSession().setAttribute("password", user1.getPassword());
-                //  roleee  request.getSession().setAttribute("role", user1.);
-            } else {
+                request.getSession().setAttribute("role", user1.getRole_id());
+                response.sendRedirect(loginURL);
+            } else if(personSelect=="librarian") {
+
+                request.getSession().setAttribute("username", user1.getUserName());
+                request.getSession().setAttribute("password", user1.getPassword());
+                request.getSession().setAttribute("role", user1.getRole_id());
+                response.sendRedirect("librarian_main.jsp");
+            }
+            else
+            {
                 response.sendRedirect(wrongLoginURL);
                 request.getSession().setAttribute("wrong_login", "Wrong username or password");
             }
