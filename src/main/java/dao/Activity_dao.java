@@ -80,6 +80,7 @@ public class Activity_dao {
         Activity activity = new Activity();
         try (PreparedStatement pstmt = conn.prepareStatement(SQL_RETURN_BOOK)) {
             pstmt.setInt(1, activityId);
+            pstmt.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(Activity_dao.class.getName()).log(Level.SEVERE, null, ex);
         }

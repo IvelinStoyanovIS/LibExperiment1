@@ -25,6 +25,8 @@ public class AllNonReturnBooksController extends HttpServlet {
         activitydao.getAllNonReturnBooks();
         ArrayList<Activity> allNRA = activitydao.getAllNonReturnBooks();
         RequestDispatcher rd;
+        activitydao.returnBookByActivityId(5);
+
 
         for (int i = 0; i < allNRA.size(); i++) {
             out.println("Recording : " + i + ": ");
