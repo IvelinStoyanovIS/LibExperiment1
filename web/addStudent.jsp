@@ -30,7 +30,7 @@
 
     <br> <input type="submit" value="Потвърди">
 
-    <c:if test="${sessionScope.role != 1 && sessionScope.role != 3}">
+    <c:if test="${sessionScope.role != 1 }">
         <c:redirect url="librarian_main.jsp"/>
     </c:if>
 
