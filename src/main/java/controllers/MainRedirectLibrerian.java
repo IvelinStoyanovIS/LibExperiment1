@@ -40,7 +40,7 @@ public class MainRedirectLibrerian extends HttpServlet {
             if (request.getParameter("searchstudent_lib") != null) {
                 response.sendRedirect(searchstudent);
             }
-            if (request.getParameter("showNRA1_lib") != null) {
+            if (request.getParameter("showNRA_lib") != null) {
                 response.sendRedirect(NRA);
             }
         }
