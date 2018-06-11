@@ -18,6 +18,7 @@ public class Activity_dao {
     private final String SQL_GET_ACTIVITY_BY_ID = "SELECT * FROM book_activity WHERE activity_id=?";
     private final String SQL_GET_ALL_NONRETURN_BOOKS = "SELECT book_activity.activity_id, books.BookName, students.name, book_activity.return_date, book_activity.is_return FROM books JOIN book_activity ON books.id = book_activity.book_id and is_return = FALSE JOIN students ON students.id = book_activity.student_id;";
     private final String SQL_GET_WARNING_ACTIVITY = "SELECT * FROM book_activity";
+    private final String SQL_RETURN_BOOK = "UPDATE book_activity SET is_return = true WHERE activity_id = ?";
 
 
     public void createActivity(Activity activity) {
@@ -73,6 +74,15 @@ public class Activity_dao {
             Logger.getLogger(Activity_dao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return allNRA;
+    }
+
+    public void returnBookByActivityId(int activityId) {
+        Activity activity = new Activity();
+        try (PreparedStatement pstmt = conn.prepareStatement(SQL_RETURN_BOOK)) {
+            pstmt.setInt(1, activityId);
+        } catch (SQLException ex) {
+            Logger.getLogger(Activity_dao.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }
