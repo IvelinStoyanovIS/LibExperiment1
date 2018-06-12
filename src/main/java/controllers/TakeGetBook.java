@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 import java.awt.print.Book;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 @WebServlet(name = "TakeGetBook", value="/TakeGetBook" )
 public class TakeGetBook extends HttpServlet {
@@ -47,10 +48,34 @@ public class TakeGetBook extends HttpServlet {
         activity.setBook_id(book1.getId());
         activity.setStudent_id(studentNumber);
         activity.setReturn_date(returnDate);
-        activity.setIs_return(false);
 
-        act_dao.createActivity(activity);
+        //if(activity.isIs_return()==true) {
 
+            activity.setIs_return(false);
+//        }
+//        else
+//        {
+//            act_dao.returnBookByActivityId(activity.getActivity_id());
+//        }
+
+        //act_dao.createActivity(activity);
+
+
+        ArrayList<Activity> nonreturnbooks=act_dao.getAllNonReturnBooks();
+
+        for (int i = 0; i < nonreturnbooks.size(); i++)
+        {
+            if(nonreturnbooks.get(i).isIs_return()==false &&
+                    nonreturnbooks.get(i).getStudent_name()==activity.getStudent_name())
+            {
+                //act_dao.returnBookByActivityId(activity.getActivity_id());
+                act_dao.returnBookByActivityId(nonreturnbooks.get(i).getActivity_id());
+
+            }
+            else {
+                act_dao.createActivity(activity);
+            }
+        }
 
 
         PrintWriter out = response.getWriter();

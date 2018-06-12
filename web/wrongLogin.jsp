@@ -16,7 +16,6 @@
     <title>Wrong Login</title>
 </head>
 <body>
-<form method="post" action="login.jsp">
     <form method="post" action="LoginController1">
 
         <label>Username</label><br>
@@ -29,13 +28,14 @@
 
 
 
-        <%--<c:if test="${sessionScope.username != null}">
-            <c:redirect url="login.jsp"/>
-        </c:if>--%>
 
-        <c:if test="${sessionScope.role !=1 && sessionScope.role !=3}">
-            <c:redirect url="index.jsp"/>
+        <c:if test="${sessionScope.role != 1 && sessionScope.role !=3 && sessionScope.username != null}">
+            <c:redirect url="wrongLogin.jsp"/>
         </c:if>
+
+        <%--<c:if test="${sessionScope.username != null}">
+            <c:redirect url="index.jsp"/>
+        </c:if>--%>
 
     </center>
 </form>
