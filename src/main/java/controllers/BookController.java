@@ -59,7 +59,8 @@ public class BookController extends HttpServlet {
 
         OutputStream out_stream = null;
         InputStream filecontent = null;
-        final String path = "/home/biba/IdeaProjects/lib2/LibExperiment1/web/images_books/";
+
+        final String path = "/Users/x/IdeaProjects/LibExperiment1Try/web/images";
 
         Part part=request.getPart("file");
         String fileName=daobook.extractFileName(part);

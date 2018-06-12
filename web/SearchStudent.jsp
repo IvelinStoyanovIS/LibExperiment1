@@ -7,27 +7,19 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
+!DOCTYPE html>
 <html>
 <head>
-    <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Student</title>
+    <title>Search Student</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/SearchStuent.css">
 </head>
 <body>
 <div id="login_form">
     <form name="f1" action="SearchStudent" method="POST" id="f1">
-        <table>
-            <tr>
-                <td class="f1_label">Курсов номер :</td><td>
-                <input type="text" name="courseNumb" value="" maxlength="5"/>
-            </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="submit" name="login" value="Потвърди" style="font-size:18px; " />
-                </td>
-            </tr>
-        </table>
-
+        <label class="f1_label">Курсов номер :</label>
+        <input type="text" name="courseNumb" value="" maxlength="10"/>
+        <input type="submit" name="login" value="Потвърди"/>
 
         <c:if test="${sessionScope.role !=1 && sessionScope.role !=3}">
             <c:redirect url="index.jsp"/>

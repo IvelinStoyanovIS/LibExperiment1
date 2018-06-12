@@ -12,43 +12,20 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>JSP Example</title>
+    <link href="css/wrongLogin.css" rel="stylesheet">
+    <title>Wrong Login</title>
 </head>
-<body bgcolor="silver">
-<%-- <form method="post" action="login.jsp"> --%>
-<form method="post" action="LoginController1">
-    <center>
-        <table border="0" width="30%" cellpadding="3">
-            <thead>
-            <tr>
-                <th colspan="2">Login Page</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>Username</td>
-                <td><label>
-                    <input type="text" name="userName" value=""/>
-                </label></td>
-            </tr>
-            <tr>
-                <td>Password</td>
-                <td><label>
-                    <input type="password" name="password" value=""/>
-                </label></td>
-            </tr>
-            <tr>
-                <td><input type="submit" name="submit" value="Login" /></td>
-                <td><input type="reset" name="reset" value="Reset" /></td>
-            </tr>
-            <tr>
-                <td colspan="2">New User <a href="register.jsp">Register Here</a></td>
-            </tr>
-            </tbody>
-        </table>
+<body>
+<form method="post" action="login.jsp">
+    <form method="post" action="LoginController1">
 
-
-        <tr>"<%=request.getSession().getAttribute("wrong_login")%>"</tr>
+        <label>Username</label><br>
+        <input type="text" name="userName" value=""/><br>
+        <label>Password</label><br>
+        <input type="password" name="password" value=""/><br>
+        <input type="submit" name="submit" value="Login" />
+        <input type="reset" name="reset" value="Reset" /><br>
+        <label>Wrong username or password</label>
 
 
 

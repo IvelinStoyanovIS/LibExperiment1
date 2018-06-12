@@ -48,7 +48,7 @@ public class StudentController extends HttpServlet {
 
         OutputStream out_stream = null;
         //final String path = request.getParameter("destination");
-        final String path = "/home/biba/IdeaProjects/lib2/LibExperiment1/web/images/";
+        final String path = "/Users/x/IdeaProjects/LibExperiment1Try/web/images";
 
         Part part=request.getPart("file");
         String fileName=daoStudent1.extractFileName(part);

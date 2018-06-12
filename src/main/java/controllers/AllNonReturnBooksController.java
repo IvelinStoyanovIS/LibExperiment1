@@ -20,12 +20,15 @@ import java.util.ArrayList;
 public class AllNonReturnBooksController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        response.setCharacterEncoding("UTF-8");
+        request.setCharacterEncoding("UTF-8");
+
         PrintWriter out = response.getWriter();
         Activity_dao activitydao = new Activity_dao();
         activitydao.getAllNonReturnBooks();
         ArrayList<Activity> allNRA = activitydao.getAllNonReturnBooks();
         RequestDispatcher rd;
-        activitydao.returnBookByActivityId(5);
+        //activitydao.returnBookByActivityId(5);
 
 
         for (int i = 0; i < allNRA.size(); i++) {

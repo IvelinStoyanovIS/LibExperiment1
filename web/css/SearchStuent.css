@@ -16,15 +16,9 @@ body{
 
 }
 
-label{
-    color: #ffffffff;
-    text-align: center;
-}
-
-
-.table{
-    margin-left : 38%;
-    margin-right: 38%;
+form{
+    margin-left : 40%;
+    margin-right: 40%;
     margin-top: 10%;
     margin-bottom: 45%;
     padding: 8px;
@@ -37,10 +31,10 @@ label{
     border-radius: 3px;
     background-color: rgba(0,0,0,.74);
 }
-input[type=text], input[type=number], textarea{
+input[type=text]{
     width: 90%;
     padding: 8px;
-    margin: 2%;
+    margin: 1%;
     border-radius: 8px;
     background-color: #ffe033;
 }
@@ -56,5 +50,9 @@ input[type=submit]{
 }
 label{
     margin: 0;
-    padding: 8px;
+    padding: 5px;
+    padding-right: 1px;
+    font-size: 15px;
+    width: 200%;
+    text-align: center;
 }

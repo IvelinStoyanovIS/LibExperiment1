@@ -1,0 +1,17 @@
+img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input[type=submit]{
+    width: 10%;
+    padding: 8px;
+    margin: 8px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    font-size: 20px;
+    font-family: cursive;
+    position: fixed;
+
+}

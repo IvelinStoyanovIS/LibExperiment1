@@ -9,15 +9,23 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            position: fixed;
+        }
+    </style>
 </head>
 <body>
-<p>WRONG COURSE NUMBER</p>
+
+<img src="images/PersonNotFound.png" alt="Wrong course number" style="width:50%;">
 
 
 <c:if test="${sessionScope.role !=1 && sessionScope.role !=3}">
     <c:redirect url="index.jsp"/>
 </c:if>
-
 </body>
 </html>

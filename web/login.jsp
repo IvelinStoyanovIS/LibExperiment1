@@ -11,28 +11,29 @@
 <html>
 <head>
     <title>Logged in</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/login.css">
 
 </head>
 <body>
-<form method="post" action="MainRedirecting">
-    <p>Wellcome to the Admin Panel</p>
-    <td><input type="submit" name="logout" value="Log out" /></td>
-    <br>
-    <td><input type="submit" name="addbook" value="Add Book" /></td>
-    <br>
-    <td><input type="submit" name="serchbook" value="Search Book" /></td>
-    <br>
-    <td><input type="submit" name="searchstudent" value="Search Student" /></td>
-    <br>
-    <td><input type="submit" name="addstudent" value="Add Student" /></td>
-    <br>
-    <td><input type="submit" name="showNRA" value="Show All !Return Books" /></td>
-    <br>
+<p>logged in</p>
+<div class="form">
+    <form method="post" action="MainRedirecting">
+        <div class=log-out><input type="submit" name="logout" value="Log out" /></div><br>
+        <h3>Book</h3>
+        <input type="submit" name="addbook" value="Add Book" />
+        <br>
+        <td><input type="submit" name="serchbook" value="Search Book" /></td>
+        <br>
+    </form>
+    <form method="post" action="MainRedirecting">
+        <h3>Student</h3>
+        <input type="submit" name="searchstudent" value="Search Student" />
+        <input type="submit" name="addstudent" value="Add Student" />
+        <input type="submit" name="showNRA" value="Show All !Returned Books">
 
 
-
-
-</form>
+    </form>
 
 
 <c:if test="${ sessionScope.role !=1}">

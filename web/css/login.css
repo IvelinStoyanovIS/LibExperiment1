@@ -1,0 +1,66 @@
+body{ 
+    padding: 50px 0; 
+    position: fixed;
+    height: 100%;
+    background-size: cover;
+	z-index: 1;
+    background-image: url(../images/slider-3-1920x1080.png); 
+    width: 100%; height: 100%;
+    margin: 0;
+    font-weight: 400;
+    word-wrap: break-word;
+    background-repeat: no-repeat;
+    
+}
+
+form{
+    font-family: cursive;
+    font-size: 18;
+    color: #ffffffff;
+    margin-top: 0;
+    margin-left: 38%;
+    margin-right: 38%;
+    border-radius: 3px;
+    padding: 1%;
+    text-align: center;
+    padding 5px;
+    border-radius: 3px;
+    background-color: rgba(1, 1, 1, 0.75);
+}
+
+
+p{
+    font-size: 18px;
+    text-align: justify;
+    font-family: sans-serif;
+    color: #ffffffff;
+    margin-left: 40%;
+    margin-right: 40%;
+    position: relative;
+    left: 50%;
+    top: 1%;
+}
+
+.log-out{
+    position:fixed;
+    left: 89.5%;
+    top: 12%;
+}
+
+
+
+input[type=submit]{
+    width: 90%;
+    padding: 8px;
+    margin: 8px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    font-size: 20px;
+    font-family: cursive;
+    
+}
+
+h3{
+    font-family:sans-serif;
+}
+

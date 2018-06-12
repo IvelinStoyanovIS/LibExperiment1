@@ -19,13 +19,15 @@ body{
 label{
     color: #ffffffff;
     text-align: center;
+    margin: 0;
+    padding: 8px;
 }
 
 
-.table{
+form{
     margin-left : 38%;
     margin-right: 38%;
-    margin-top: 10%;
+    margin-top: 1%;
     margin-bottom: 45%;
     padding: 8px;
     font-size: 18px; 
@@ -53,8 +55,4 @@ input[type=submit]{
     border-radius: 10px;
     font-size: 20px;
     font-family: cursive;
-}
-label{
-    margin: 0;
-    padding: 8px;
 }
