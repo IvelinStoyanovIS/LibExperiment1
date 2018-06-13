@@ -78,6 +78,26 @@ public class Student_dao {
     }
 
 
+    public Student getStudetById(int studentID) {
+        Student stud1 = new Student();
+        try (PreparedStatement pstmt = conn.prepareStatement(SQL_GET_STUDENTS_BY_ID)) {
+            pstmt.setInt(1, studentID);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    stud1.setId(rs.getInt(1));
+                    stud1.setName(rs.getString(2));
+                    stud1.setReadBooks(rs.getInt(3));
+                    stud1.setEmail(rs.getString(4));
+                    stud1.setCurrntBook(rs.getString(5));
+                    stud1.setPathImage(rs.getString(6));
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Books_dao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return stud1;
+    }
+
 
     public ArrayList<Student> getAllStudents() {
         ArrayList<Student> allStudents = new ArrayList();
@@ -99,12 +119,6 @@ public class Student_dao {
         }
         return allStudents;
     }
-
-
-
-
-
-
 
 }
 

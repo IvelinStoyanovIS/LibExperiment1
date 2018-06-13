@@ -32,6 +32,7 @@ public class TakeGetBook extends HttpServlet {
         Books_dao book_dao=new Books_dao();
 
         Books book1=new Books();
+        Student stud1=new Student();
 
         Activity activity = new Activity();
 
@@ -48,6 +49,11 @@ public class TakeGetBook extends HttpServlet {
         activity.setBook_id(book1.getId());
         activity.setStudent_id(studentNumber);
         activity.setReturn_date(returnDate);
+        stud1=stud_dao.getStudetById(studentNumber);
+
+        activity.setStudent_name(stud1.getName());
+        activity.setBook_name(book1.getBookName());
+
 
         //if(activity.isIs_return()==true) {
 
@@ -61,22 +67,27 @@ public class TakeGetBook extends HttpServlet {
         //act_dao.createActivity(activity);
 
 
-        ArrayList<Activity> nonreturnbooks=act_dao.getAllNonReturnBooks();
+//        ArrayList<Activity> nonreturnbooks=act_dao.getAllNonReturnBooks();
 
-        for (int i = 0; i < nonreturnbooks.size(); i++)
-        {
-            if(nonreturnbooks.get(i).isIs_return()==false &&
-                    nonreturnbooks.get(i).getStudent_name()==activity.getStudent_name())
-            {
-                //act_dao.returnBookByActivityId(activity.getActivity_id());
-                act_dao.returnBookByActivityId(nonreturnbooks.get(i).getActivity_id());
+//        for (int i = 0; i < nonreturnbooks.size(); i++)
+//        {
+//            if(nonreturnbooks.get(i).isIs_return()==false &&
+//                    nonreturnbooks.get(i).getStudent_name()==activity.getStudent_name() &&
+//                    nonreturnbooks.get(i).getBook_id()==activity.getBook_id())
+//            {
+//                //act_dao.returnBookByActivityId(activity.getActivity_id());
+//                act_dao.returnBookByActivityId(nonreturnbooks.get(i).getActivity_id());
+//                break;
+//
+//            }
+//            else {
+//                act_dao.createActivity(activity);
+//                break;
+//            }
+//        }
 
-            }
-            else {
-                act_dao.createActivity(activity);
-            }
-        }
 
+        act_dao.returnAct(activity);
 
         PrintWriter out = response.getWriter();
         out.println(barcode);

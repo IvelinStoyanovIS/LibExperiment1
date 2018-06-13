@@ -64,8 +64,8 @@ public class Activity_dao {
             while (rs.next()) {
                 Activity activity = new Activity();
                 activity.setActivity_id(rs.getInt(1));
-                activity.setStudent_name(rs.getString(2));
-                activity.setBook_name(rs.getString(3));
+                activity.setBook_name(rs.getString(2));
+                activity.setStudent_name(rs.getString(3));
                 activity.setReturn_date(rs.getString(4));
                 activity.setIs_return(rs.getBoolean(5));
                 allNRA.add(activity);
@@ -86,6 +86,22 @@ public class Activity_dao {
         }
     }
 
+
+    public boolean returnAct(Activity activity) {
+        Activity_dao act_dao = new Activity_dao();
+        ArrayList<Activity> nonreturnbooks = act_dao.getAllNonReturnBooks();
+        for (int i = 0; i < nonreturnbooks.size(); i++) {
+            if (nonreturnbooks.get(i).isIs_return() == false &&
+                    nonreturnbooks.get(i).getStudent_name().equals(activity.getStudent_name())  &&
+                    nonreturnbooks.get(i).getBook_name().equals( activity.getBook_name())) {
+                act_dao.returnBookByActivityId(nonreturnbooks.get(i).getActivity_id());
+                return true;
+            }
+        }
+        act_dao.createActivity(activity);
+        return false;
+
+    }
 }
 
 
