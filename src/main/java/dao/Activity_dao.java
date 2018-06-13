@@ -19,6 +19,7 @@ public class Activity_dao {
     private final String SQL_GET_ALL_NONRETURN_BOOKS = "SELECT book_activity.activity_id, books.BookName, students.name, book_activity.return_date, book_activity.is_return FROM books JOIN book_activity ON books.id = book_activity.book_id and is_return = FALSE JOIN students ON students.id = book_activity.student_id;";
     private final String SQL_GET_WARNING_ACTIVITY = "SELECT * FROM book_activity";
     private final String SQL_RETURN_BOOK = "UPDATE book_activity SET is_return = true WHERE activity_id = ?";
+    private final String SQL_GET_DAYS_LEFT = "SELECT DATEDIFF((SELECT book_activity.return_date FROM book_activity WHERE activity_id=?), CURDATE())";
 
 
     public void createActivity(Activity activity) {
@@ -101,6 +102,22 @@ public class Activity_dao {
         act_dao.createActivity(activity);
         return false;
 
+    }
+
+    public int getActivityDaysLeft(int activityId) {
+        Activity activity = new Activity();
+        int DaysLeft = 0;
+        try (PreparedStatement pstmt = conn.prepareStatement(SQL_GET_DAYS_LEFT)) {
+            pstmt.setInt(1, activityId);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    DaysLeft = rs.getInt(1);
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Activity_dao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return DaysLeft;
     }
 }
 

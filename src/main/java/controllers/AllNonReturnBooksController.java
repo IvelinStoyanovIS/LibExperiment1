@@ -40,11 +40,14 @@ public class AllNonReturnBooksController extends HttpServlet {
            // request.setAttribute("student_name", allNRA.get(i).getStudent_name());
             out.print(" | " + allNRA.get(i).getReturn_date());
             //request.setAttribute("return_date", allNRA.get(i).getReturn_date());
-            out.println(" | " + allNRA.get(i).isIs_return());
+            out.print(" | " + allNRA.get(i).isIs_return());
             //request.setAttribute("is_return", allNRA.get(i).isIs_return());
             //rd = request.getRequestDispatcher("NRA.jsp");
            // rd.forward(request, response);
+            out.println(" | Days Left -> " + activitydao.getActivityDaysLeft(allNRA.get(i).getActivity_id()));
         }
+
+
 
     }
 
