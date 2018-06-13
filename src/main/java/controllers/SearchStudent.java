@@ -1,5 +1,6 @@
 package controllers;
 
+import dao.Activity_dao;
 import dao.Student_dao;
 import entities.Student;
 
@@ -18,6 +19,7 @@ public class SearchStudent extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         request.setCharacterEncoding("UTF-8");
         HttpSession ses = request.getSession(true);
+        Activity_dao act_dao=new Activity_dao();
 
 
         String courseNumber=request.getParameter("courseNumb");
@@ -41,7 +43,8 @@ public class SearchStudent extends HttpServlet {
             request.setAttribute("coursenumb", student1.getCourseNumb());
             request.setAttribute("email", student1.getEmail());
             request.setAttribute("currentbook", student1.getCurrntBook());
-            request.setAttribute("readbooks", student1.getReadBooks());
+            //request.setAttribute("readbooks", student1.getReadBooks());
+            request.setAttribute("readbooks", act_dao.CalcGetReadBooks(student1));
             request.setAttribute("path", student1.getPathImage());
             ses.setAttribute("studid", student1.getId());
             rd = request.getRequestDispatcher("StudentPage.jsp");

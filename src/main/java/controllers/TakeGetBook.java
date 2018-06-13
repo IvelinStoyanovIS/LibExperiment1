@@ -54,45 +54,26 @@ public class TakeGetBook extends HttpServlet {
         activity.setStudent_name(stud1.getName());
         activity.setBook_name(book1.getBookName());
 
-
-        //if(activity.isIs_return()==true) {
-
-            activity.setIs_return(false);
-//        }
-//        else
-//        {
-//            act_dao.returnBookByActivityId(activity.getActivity_id());
-//        }
-
-        //act_dao.createActivity(activity);
-
-
-//        ArrayList<Activity> nonreturnbooks=act_dao.getAllNonReturnBooks();
-
-//        for (int i = 0; i < nonreturnbooks.size(); i++)
-//        {
-//            if(nonreturnbooks.get(i).isIs_return()==false &&
-//                    nonreturnbooks.get(i).getStudent_name()==activity.getStudent_name() &&
-//                    nonreturnbooks.get(i).getBook_id()==activity.getBook_id())
-//            {
-//                //act_dao.returnBookByActivityId(activity.getActivity_id());
-//                act_dao.returnBookByActivityId(nonreturnbooks.get(i).getActivity_id());
-//                break;
-//
-//            }
-//            else {
-//                act_dao.createActivity(activity);
-//                break;
-//            }
-//        }
+        activity.setIs_return(false);
 
 
         act_dao.returnAct(activity);
 
-        PrintWriter out = response.getWriter();
-        out.println(barcode);
-        out.println(returnDate);
-        out.println(studentNumber);
+//        PrintWriter out = response.getWriter();
+//        out.println(barcode);
+//        out.println(returnDate);
+//        out.println(studentNumber);
+
+
+        if(ses.getAttribute("role").equals(1))
+        {
+            response.sendRedirect("login.jsp");
+        }
+        else if(ses.getAttribute("role").equals(3))
+        {
+            response.sendRedirect("librarian_main.jsp");
+        }
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

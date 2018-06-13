@@ -5,6 +5,7 @@ package dao;
  */
 
 import entities.Activity;
+import entities.Student;
 import util.ConnectionConfiguration;
 
 import java.sql.*;
@@ -20,7 +21,9 @@ public class Activity_dao {
     private final String SQL_GET_WARNING_ACTIVITY = "SELECT * FROM book_activity";
     private final String SQL_RETURN_BOOK = "UPDATE book_activity SET is_return = true WHERE activity_id = ?";
     private final String SQL_GET_DAYS_LEFT = "SELECT DATEDIFF((SELECT book_activity.return_date FROM book_activity WHERE activity_id=?), CURDATE())";
-
+    private final String SQL_GET_NUMB_READ_BOOKS="Select count(name) from books join book_activity\n" +
+            "ON books.id = book_activity.book_id and is_return = true\n" +
+            "JOIN students ON students.id = book_activity.student_id WHERE name=?";
 
     public void createActivity(Activity activity) {
         try (PreparedStatement pstmt = conn.prepareStatement(SQL_CREATE_ACTIVITY, Statement.RETURN_GENERATED_KEYS)) {
@@ -104,6 +107,7 @@ public class Activity_dao {
 
     }
 
+
     public int getActivityDaysLeft(int activityId) {
         Activity activity = new Activity();
         int DaysLeft = 0;
@@ -118,6 +122,23 @@ public class Activity_dao {
             Logger.getLogger(Activity_dao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return DaysLeft;
+    }
+
+    public int CalcGetReadBooks(Student student)
+    {
+        Student stud1 = new Student();
+        int readBook=0;
+        try (PreparedStatement pstmt = conn.prepareStatement(SQL_GET_NUMB_READ_BOOKS)) {
+            pstmt.setString(1, student.getName());
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    readBook = rs.getInt(1);
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Books_dao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return readBook;
     }
 }
 
