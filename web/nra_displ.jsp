@@ -14,7 +14,7 @@
 </head>
 <body>
 <c:forEach var="asd" items="${requestScope.allnra}">
-    <c:out value="${'Book Name:'} ${asd.getBook_name()} ${'|||Student Name:'} ${asd.getStudent_name()} ${'|||Return Date:'}${asd.getReturn_date()} ${'|||Is it returned:'} ${asd.isIs_return()} ${'|||Days left:'} ${activity.getGetDaysLeft()}"/><br />
+    <c:out value="${'Book Name:'} ${asd.getBook_name()} ${'|||Student Name:'} ${asd.getStudent_name()} ${'|||Return Date:'}${asd.getReturn_date()} ${'|||Is it returned:'} ${asd.isIs_return()} ${'|||Days left:'} ${asd.getLeftDays()}"/><br />
 </c:forEach>
 
 
