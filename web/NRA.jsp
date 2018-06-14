@@ -7,6 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="entities.Activity"%>
 <html>
 <head>
     <title>NRA</title>
@@ -17,14 +18,10 @@
         <table>
                 <td>
                     <input type="submit" name="login" value="Потвърди" style="font-size:18px; " />
+
                 </td>
             </tr>
         </table>
-        <h3> ${book_name}</h3>
-        <h3> ${student_name}</h3>
-        <h3> ${return_date}</h3>
-        <h3> ${is_return}</h3>
-
 
         <c:if test="${sessionScope.role !=1 && sessionScope.role !=3}">
             <c:redirect url="index.jsp"/>

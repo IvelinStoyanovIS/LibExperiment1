@@ -99,6 +99,7 @@ public class Activity_dao {
             if (nonreturnbooks.get(i).isIs_return() == false &&
                     nonreturnbooks.get(i).getStudent_name().equals(activity.getStudent_name())  &&
                     nonreturnbooks.get(i).getBook_name().equals( activity.getBook_name())) {
+                //ako knigata ne e wzeta ot tozi student
                 act_dao.returnBookByActivityId(nonreturnbooks.get(i).getActivity_id());
                 return true;
             }
@@ -127,7 +128,6 @@ public class Activity_dao {
 
     public int CalcGetReadBooks(Student student)
     {
-        Student stud1 = new Student();
         int readBook=0;
         try (PreparedStatement pstmt = conn.prepareStatement(SQL_GET_NUMB_READ_BOOKS)) {
             pstmt.setString(1, student.getName());
