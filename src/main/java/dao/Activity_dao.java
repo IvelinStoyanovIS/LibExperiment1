@@ -66,11 +66,13 @@ public class Activity_dao {
              ResultSet rs = pstmt.executeQuery()) {
             while (rs.next()) {
                 Activity activity = new Activity();
+                Activity_dao act_dao = new Activity_dao();
                 activity.setActivity_id(rs.getInt(1));
                 activity.setBook_name(rs.getString(2));
                 activity.setStudent_name(rs.getString(3));
                 activity.setReturn_date(rs.getString(4));
                 activity.setIs_return(rs.getBoolean(5));
+                activity.setLeftDays(act_dao.getActivityDaysLeft(activity.getActivity_id()));
                 allNRA.add(activity);
             }
         } catch (SQLException ex) {

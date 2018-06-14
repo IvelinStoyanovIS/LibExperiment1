@@ -50,6 +50,16 @@ public class Activity {
     private String return_date;
     private boolean is_return;
 
+    public int getLeftDays() {
+        return leftDays;
+    }
+
+    public void setLeftDays(int leftDays) {
+        this.leftDays = leftDays;
+    }
+
+    private int leftDays;
+
     public int getStudent_id() {
         return student_id;
     }
