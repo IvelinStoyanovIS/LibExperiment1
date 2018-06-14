@@ -21,9 +21,8 @@ public class Activity_dao {
     private final String SQL_GET_WARNING_ACTIVITY = "SELECT * FROM book_activity";
     private final String SQL_RETURN_BOOK = "UPDATE book_activity SET is_return = true WHERE activity_id = ?";
     private final String SQL_GET_DAYS_LEFT = "SELECT DATEDIFF((SELECT book_activity.return_date FROM book_activity WHERE activity_id=?), CURDATE())";
-    private final String SQL_GET_NUMB_READ_BOOKS="Select count(name) from books join book_activity\n" +
-            "ON books.id = book_activity.book_id and is_return = true\n" +
-            "JOIN students ON students.id = book_activity.student_id WHERE name=?";
+    private final String SQL_GET_NUMB_READ_BOOKS="Select count(name) from books join book_activity ON books.id = book_activity.book_id and is_return = true JOIN students ON students.id = book_activity.student_id WHERE name=?";
+    private final String SQL_GET_CURRENT_TAKEN_BOOK="SELECT books.BookName FROM books JOIN book_activity ON books.id = book_activity.book_id WHERE book_activity.student_id = ? AND is_return = false ORDER BY book_activity.activity_id DESC LIMIT 1";
 
     public void createActivity(Activity activity) {
         try (PreparedStatement pstmt = conn.prepareStatement(SQL_CREATE_ACTIVITY, Statement.RETURN_GENERATED_KEYS)) {
@@ -139,6 +138,21 @@ public class Activity_dao {
             Logger.getLogger(Books_dao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return readBook;
+    }
+
+    public String getCurrentTakenBook(int studentID) {
+        String Book = "Not Found";
+        try (PreparedStatement pstmt = conn.prepareStatement(SQL_GET_CURRENT_TAKEN_BOOK)) {
+            pstmt.setInt(1, studentID);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    Book = rs.getString(1);
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Activity_dao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return Book;
     }
 }
 

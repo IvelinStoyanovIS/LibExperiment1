@@ -45,6 +45,7 @@ public class AllNonReturnBooksController extends HttpServlet {
             //rd = request.getRequestDispatcher("NRA.jsp");
            // rd.forward(request, response);
             out.println(" | Days Left -> " + activitydao.getActivityDaysLeft(allNRA.get(i).getActivity_id()));
+
         }
 
 

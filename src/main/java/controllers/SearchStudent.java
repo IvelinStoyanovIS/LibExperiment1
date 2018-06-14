@@ -42,7 +42,7 @@ public class SearchStudent extends HttpServlet {
             request.setAttribute("studentname", student1.getName());
             request.setAttribute("coursenumb", student1.getCourseNumb());
             request.setAttribute("email", student1.getEmail());
-            request.setAttribute("currentbook", student1.getCurrntBook());
+            request.setAttribute("currentbook", act_dao.getCurrentTakenBook(student1.getId()));
             //request.setAttribute("readbooks", student1.getReadBooks());
             request.setAttribute("readbooks", act_dao.CalcGetReadBooks(student1));
             request.setAttribute("path", student1.getPathImage());
