@@ -20,21 +20,24 @@
 </head>
 <body>
 
-<table style="width:50% ">
+<table style="width:70% ">
     <tr>
-        <th>Book name</th>
-        <th>Student Name</th>
-        <th>Return Date</th>
-        <th>Is it returned</th>
-        <th>Days left</th>
+        <th>Име на книгата </th>
+        <th>Име на ученик </th>
+        <th>Дата за връщане </th>
+        <th>Оставащи дни</th>
+        <th>Върната ли е книгата </th>
     </tr>
 <c:forEach var="asd" items="${requestScope.allnra}">
     <tr>
         <td>${asd.getBook_name()}</td>
         <td>${asd.getStudent_name()}</td>
         <td>${asd.getReturn_date()}</td>
-        <td>${asd.isIs_return()}</td>
         <td>${asd.getLeftDays()}</td>
+        <c:if test = "${asd.isIs_return() == false}">
+            <td><c:out value = "${'Не'}"/></td>
+        </c:if>
+
     </tr>
     </c:forEach>
 
